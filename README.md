@@ -1,6 +1,6 @@
-# Snoopdigg
-
 ![Snoopdigg](https://github.com/botherder/snoopdigg/raw/master/graphics/icon%40128.png)
+
+# Snoopdigg
 
 Snoopdigg is a simple tool to automate some basic steps to acquire some
 forensics evidence from Windows computers. Snoopdigg is normally intended for
