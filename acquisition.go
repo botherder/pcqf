@@ -16,7 +16,6 @@ type Acquisition struct {
 	Platform string
 	Folder string
 	Storage string
-	Bin string
 	Autoruns string
 	Memory string
 }
