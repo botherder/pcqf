@@ -25,7 +25,7 @@ func getUserName() string {
 		return ""
 	}
 
-	return userObject.Name
+	return userObject.Username
 }
 
 // Get computer name.
