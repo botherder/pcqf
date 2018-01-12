@@ -3,7 +3,6 @@ package main
 import (
 	"os"
 	"fmt"
-	"bytes"
 	"path/filepath"
 	"encoding/json"
 	"github.com/botherder/go-files"
@@ -39,7 +38,7 @@ func generateAutoruns() {
 	// buf := new(bytes.Buffer)
 	// json.NewEncoder(buf).Encode(autoruns)
 
-	buf := json.MarshalIndent(autoruns, "", "    ")
+	buf, _ := json.MarshalIndent(autoruns, "", "    ")
 
 	autorunsJson.WriteString(buf.String())
 	autorunsJson.Sync()
