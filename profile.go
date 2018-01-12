@@ -2,7 +2,6 @@ package main
 
 import (
 	"os"
-	"bytes"
 	"path/filepath"
 	"encoding/json"
 	log "github.com/Sirupsen/logrus"
@@ -21,10 +20,9 @@ func generateProfile() {
 	defer profile.Close()
 
 	// Encoding into json.
-	buf := new(bytes.Buffer)
-	json.NewEncoder(buf).Encode(acq)
+	buf, _ := json.MarshalIndent(autoruns, "", "    ")
 
-	profile.WriteString(buf.String())
+	profile.WriteString(string(buf[:]))
 	profile.Sync()
 
 	log.Info("Profile generated!")

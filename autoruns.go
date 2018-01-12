@@ -35,9 +35,6 @@ func generateAutoruns() {
 	defer autorunsJson.Close()
 
 	// Encoding into json.
-	// buf := new(bytes.Buffer)
-	// json.NewEncoder(buf).Encode(autoruns)
-
 	buf, _ := json.MarshalIndent(autoruns, "", "    ")
 
 	autorunsJson.WriteString(string(buf[:]))
