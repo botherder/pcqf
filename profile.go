@@ -20,7 +20,7 @@ func generateProfile() {
 	defer profile.Close()
 
 	// Encoding into json.
-	buf, _ := json.MarshalIndent(autoruns, "", "    ")
+	buf, _ := json.MarshalIndent(acq, "", "    ")
 
 	profile.WriteString(string(buf[:]))
 	profile.Sync()
