@@ -40,7 +40,7 @@ func generateAutoruns() {
 
 	buf, _ := json.MarshalIndent(autoruns, "", "    ")
 
-	autorunsJson.WriteString(buf.String())
+	autorunsJson.WriteString(string(buf[:]))
 	autorunsJson.Sync()
 
 	log.Info("Autoruns collected successfully!")
