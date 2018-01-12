@@ -3,7 +3,7 @@
 # Snoopdigg
 
 Snoopdigg is a simple tool to automate some basic steps to acquire some
-forensics evidence from Windows computers. Snoopdigg is normally intended for
+evidence of compromise from Windows computers. Snoopdigg is normally intended for
 trainers, researchers, and incident responders without a particular background
 in information security and computer forensics.
 
@@ -17,7 +17,7 @@ Often, it is not possible (because of logistical reasons, lack of appropriate
 hardware, or simply privacy issues) to do a full disk image of the computer.
 Snoopdigg allows to at least fetch sufficient data to initiate an
 investigation minimizing the exposure of personal information as well as
-avoiding the need for the person performing the acquisition to be adequately
+avoiding the need for the person performing the acquisition to be specifically
 trained in using rather unfriendly tools.
 
 ## How to use
