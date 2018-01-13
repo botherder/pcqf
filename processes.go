@@ -5,6 +5,7 @@ import (
 	"path/filepath"
 	"encoding/json"
 	"github.com/shirou/gopsutil/process"
+	log "github.com/Sirupsen/logrus"
 )
 
 func generateProcessList() {
