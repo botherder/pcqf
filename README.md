@@ -49,7 +49,7 @@ by a numeric suffix.
     - An *autoruns.json* file containing a list of all items with persistence on
       the system.
     - An *autoruns/* folder containing copies of the files and executables
-      marked for persistence in the previous CSV file.
+      marked for persistence in the previous Json file.
     - If successful, a *memory/* folder will contain both the physical memory
       dump as well as some metadata.
 
