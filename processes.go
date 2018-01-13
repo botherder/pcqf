@@ -25,7 +25,7 @@ func generateProcessList() {
 	}
 	defer processesJson.Close()
 
-	buf, _ := json.MarshalIndent(autoruns, "", "    ")
+	buf, _ := json.MarshalIndent(processes, "", "    ")
 
 	processesJson.WriteString(string(buf[:]))
 	processesJson.Sync()
