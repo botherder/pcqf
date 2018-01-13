@@ -32,7 +32,7 @@ func generateProcessList() {
 			Name: proc.Name(),
 			ParentPid: proc.Ppid(),
 			Exe: proc.Exe(),
-			Cmdline: proc.Cmdline()
+			Cmdline: proc.Cmdline(),
 		}
 		processList = append(processList, entry)
 	}
