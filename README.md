@@ -45,6 +45,7 @@ by a numeric suffix.
 5. Each acquisition folder will contain the following files:
 
     - A *profile.json* file containing basic information on the computer system.
+    - A *processlist.json* file containing a list of running processes.
     - An *autoruns.json* file containing a list of all items with persistence on
       the system.
     - An *autoruns/* folder containing copies of the files and executables
