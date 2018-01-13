@@ -25,16 +25,15 @@ func generateProcessList() {
 		return
 	}
 
-	var processList []*RunningProcess
+	var processList []RunningProcess
 	for _, proc := range procs {
-		pid, _ := proc.Pid()
 		name, _ := proc.Name()
 		ppid, _ := proc.Ppid()
 		exe, _ := proc.Exe()
 		cmd, _ := proc.Cmdline()
 
 		entry := RunningProcess{
-			Pid: pid,
+			Pid: proc.Pid,
 			Name: name,
 			ParentPid: ppid,
 			Exe: exe,
