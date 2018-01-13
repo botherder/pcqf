@@ -30,6 +30,7 @@ func main() {
 	log.Info("Started acquisition ", acq.Folder)
 
 	generateProfile()
+	generateProcessList()
 	generateAutoruns()
 	generateMemoryDump()
 

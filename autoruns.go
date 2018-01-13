@@ -29,7 +29,7 @@ func generateAutoruns() {
 	autorunsJsonPath := filepath.Join(acq.Storage, "autoruns.json")
 	autorunsJson, err := os.Create(autorunsJsonPath)
 	if err != nil {
-		log.Error("Unable to create autoruns list: ", err.Error())
+		log.Error("Unable to save autoruns to file: ", err.Error())
 		return
 	}
 	defer autorunsJson.Close()
