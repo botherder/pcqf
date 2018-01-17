@@ -38,7 +38,7 @@ for example in relation to the generation of the memory dump.
 
 4. Once completed, you will find a new folder called "acquisitions". Inside this
 folder you will see a folder for each acquisition you made. The folders will
-be named in the format "YYYY-MM-DD_\<COMPUTER NAME\>". You can perform
+be named in the format `YYYY-MM-DD_\<COMPUTER NAME\>`. You can perform
 multiple acquisitions from the same computer, new folders will be distinguished
 by a numeric suffix.
 
@@ -74,10 +74,12 @@ possess or don't carry the private key.
 
 If you place a file called `public.asc` in the same folder as the Snoopdigg
 executable, Snoopdigg will automatically attempt to compress and encrypt each
-acquisition and delete the original unencrypted copies. Bear in mind, it is
-always possible that at least some portion of the unencrypted data could be
-recovered through advanced forensics techniques - although we're working to
-mitigate that.
+acquisition and delete the original unencrypted copies. The encrypted file will
+be named with an undescriptive unique identifier.
+
+Bear in mind, it is always possible that at least some portion of the
+unencrypted data could be recovered through advanced forensics techniques -
+although we're working to mitigate that.
 
 ## Known issues
 
