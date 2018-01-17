@@ -3,8 +3,11 @@ package main
 import (
 	"os"
 	"fmt"
+	"bufio"
+	"strings"
 	log "github.com/Sirupsen/logrus"
 	"github.com/mattn/go-colorable"
+	"github.com/shirou/gopsutil/mem"
 )
 
 var acq Acquisition
@@ -32,11 +35,26 @@ func main() {
 	generateProfile()
 	generateProcessList()
 	generateAutoruns()
-	generateMemoryDump()
+
+	virt, _ := mem.VirtualMemory()
+	total := virt.Total / 1000000000
+
+	log.Warning("Do you want to take a memory snapshot (it will take circa ", total, " GB of space) ? [y/N]")
+
+	reader := bufio.NewReader(os.Stdin)
+	choice, _ := reader.ReadString('\n')
+	choice = strings.Replace(choice, "\r\n", "", -1)
+	if choice == "y" || choice == "Y" {
+		generateMemoryDump()
+	} else {
+		log.Info("Skipping memory acquisition.")
+	}
+
+	storeSecurely()
 
 	log.Info("Acquisition completed.")
 
 	log.Info("Press Enter to finish ...")
-	var b []byte = make([]byte, 1)
+	var b = make([]byte, 1)
 	os.Stdin.Read(b)
 }
