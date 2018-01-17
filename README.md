@@ -53,7 +53,7 @@ by a numeric suffix.
     - If successful, a *memory/* folder will contain both the physical memory
       dump as well as some metadata.
 
-## Encryption
+## Encryption & Potential Threats
 
 It might be the case that carrying the acquisitions unencrypted might expose
 yourself, and even more so those you acquired data from, to significant risk.
