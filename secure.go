@@ -39,7 +39,7 @@ func storeSecurely() {
 
 	log.Info("Encrypting the compressed archive. This might take a while...")
 
-	// Prepare for error-handling nightmare...
+	// Prepare for error-handling hell...
 
 	zipFile, err := os.Open(zipFilePath)
 	if err != nil {
