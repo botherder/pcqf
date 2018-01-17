@@ -18,6 +18,7 @@ deps:
 	@go get -u github.com/botherder/go-autoruns
 	@go get -u github.com/matishsiao/goInfo
 	@go get -u github.com/satori/go.uuid
+	@go get -u github.com/shirou/gopsutil/mem
 	@echo "[deps] Depdenencies installed."
 
 windows:
