@@ -53,6 +53,31 @@ by a numeric suffix.
     - If successful, a *memory/* folder will contain both the physical memory
       dump as well as some metadata.
 
+## Encryption
+
+It might be the case that carrying the acquisitions unencrypted might expose
+yourself, and even more so those you acquired data from, to significant risk.
+For example, you might be stopped at a problematic border and your Snoopdigg
+drive could be seized. The raw data might not only expose the purpose of your
+trip, but it will likely contain very sensitive data (particularly in the memory
+image).
+
+Ideally you would have the drive fully encrypted, but because of practicality
+that might not be possible. You could also consider placing Snoopdigg inside a
+[VeraCrypt](https://www.veracrypt.fr/) and carry with it a copy of VeraCrypt
+to mount it. However, this might be used to force you to unlock and mount it.
+
+Alternatively, Snoopdigg allows to encrypt each acquisition with a provided PGP
+public key. Preferably, this public key belongs to a keyset for which you don't
+possess or don't carry the private key.
+
+If you place a file called `public.asc` in the same folder as the Snoopdigg
+executable, Snoopdigg will automatically attempt to compress and encrypt each
+acquisition and delete the original unencrypted copies. Bear in mind, it is
+always possible that at least some portion of the unencrypted data could be
+recovered through advanced forensics techniques - although we're working to
+mitigate that.
+
 ## Known issues
 
 The memory acquisition does not work on Windows XP.
