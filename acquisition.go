@@ -5,10 +5,12 @@ import (
 	"fmt"
 	"time"
 	"path/filepath"
+	"github.com/satori/go.uuid"
 )
 
 // Acquisition defines the basic properties we want to store.
 type Acquisition struct {
+	UUID string
 	Date string
 	Time string
 	ComputerName string
@@ -21,6 +23,8 @@ type Acquisition struct {
 }
 
 func (a *Acquisition) Initialize() {
+	uuid, _ := uuid.NewV4()
+	a.UUID = uuid
 	// Get the time in UTC.
 	currentTime := time.Now().UTC()
 	// Extract the date through Go's idiotic formatting.
