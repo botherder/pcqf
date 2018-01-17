@@ -20,7 +20,7 @@ investigation minimizing the exposure of personal information as well as
 avoiding the need for the person performing the acquisition to be specifically
 trained in using rather unfriendly tools.
 
-[Download Snoopdigg](https://github.com/botherder/snoopdigg/releases)
+[Download Snoopdigg](https://github.com/botherder/snoopdigg/releases/latest)
 
 ## How to use
 
