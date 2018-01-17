@@ -26,19 +26,19 @@ func generateAutoruns() {
 	}
 
 	// Store the json list to file.
-	autorunsJsonPath := filepath.Join(acq.Storage, "autoruns.json")
-	autorunsJson, err := os.Create(autorunsJsonPath)
+	autorunsJSONPath := filepath.Join(acq.Storage, "autoruns.json")
+	autorunsJSON, err := os.Create(autorunsJSONPath)
 	if err != nil {
 		log.Error("Unable to save autoruns to file: ", err.Error())
 		return
 	}
-	defer autorunsJson.Close()
+	defer autorunsJSON.Close()
 
 	// Encoding into json.
 	buf, _ := json.MarshalIndent(autoruns, "", "    ")
 
-	autorunsJson.WriteString(string(buf[:]))
-	autorunsJson.Sync()
+	autorunsJSON.WriteString(string(buf[:]))
+	autorunsJSON.Sync()
 
 	log.Info("Autoruns collected successfully!")
 }

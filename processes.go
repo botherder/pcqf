@@ -43,17 +43,17 @@ func generateProcessList() {
 	}
 
 	processListPath := filepath.Join(acq.Storage, "processlist.json")
-	processListJson, err := os.Create(processListPath)
+	processListJSON, err := os.Create(processListPath)
 	if err != nil {
 		log.Error("Unable to save process list to file: ", err.Error())
 		return
 	}
-	defer processListJson.Close()
+	defer processListJSON.Close()
 
 	buf, _ := json.MarshalIndent(processList, "", "    ")
 
-	processListJson.WriteString(string(buf[:]))
-	processListJson.Sync()
+	processListJSON.WriteString(string(buf[:]))
+	processListJSON.Sync()
 
 	log.Info("Process list generated successfully!")
 }

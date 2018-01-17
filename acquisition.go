@@ -24,7 +24,7 @@ type Acquisition struct {
 
 func (a *Acquisition) Initialize() {
 	uuid, _ := uuid.NewV4()
-	a.UUID = uuid
+	a.UUID = uuid.String()
 	// Get the time in UTC.
 	currentTime := time.Now().UTC()
 	// Extract the date through Go's idiotic formatting.
