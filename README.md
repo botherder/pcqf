@@ -44,13 +44,13 @@ by a numeric suffix.
 
 5. Each acquisition folder will contain the following files:
 
-    - A *profile.json* file containing basic information on the computer system.
-    - A *processlist.json* file containing a list of running processes.
-    - An *autoruns.json* file containing a list of all items with persistence on
+    - A `profile.json` file containing basic information on the computer system.
+    - A `processlist.json` file containing a list of running processes.
+    - An `autoruns.json` file containing a list of all items with persistence on
       the system.
-    - An *autoruns/* folder containing copies of the files and executables
+    - An `autoruns/` folder containing copies of the files and executables
       marked for persistence in the previous Json file.
-    - If successful, a *memory/* folder will contain both the physical memory
+    - If successful, a `memory/` folder will contain both the physical memory
       dump as well as some metadata.
 
 ## Encryption & Potential Threats
