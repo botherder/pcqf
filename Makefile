@@ -12,11 +12,12 @@ lint:
 
 deps:
 	@echo "[deps] Installing dependencies..."
-	@go get github.com/Sirupsen/logrus
-	@go get github.com/mattn/go-colorable
-	@go get github.com/botherder/go-files
+	@go get -u github.com/Sirupsen/logrus
+	@go get -u github.com/mattn/go-colorable
+	@go get -u github.com/botherder/go-files
 	@go get -u github.com/botherder/go-autoruns
-	@go get github.com/matishsiao/goInfo
+	@go get -u github.com/matishsiao/goInfo
+	@go get -u github.com/satori/go.uuid
 	@echo "[deps] Depdenencies installed."
 
 windows:
