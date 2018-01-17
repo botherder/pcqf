@@ -59,8 +59,9 @@ It might be the case that carrying the acquisitions unencrypted might expose
 yourself, and even more so those you acquired data from, to significant risk.
 For example, you might be stopped at a problematic border and your Snoopdigg
 drive could be seized. The raw data might not only expose the purpose of your
-trip, but it will likely contain very sensitive data (particularly in the memory
-image, which could contain usernames & passwords, browsing history, and more).
+trip, but it will also likely contain very sensitive data (particularly in the
+memory image, which could contain usernames & passwords, browsing history,
+and more).
 
 Ideally you would have the drive fully encrypted, but because of practicality
 that might not be possible. You could also consider placing Snoopdigg inside a
