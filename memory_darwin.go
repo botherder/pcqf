@@ -7,8 +7,6 @@ import (
 	log "github.com/Sirupsen/logrus"
 )
 
-osxpmemPath := filepath.Join(binPath, "osxpmem.app", "osxpmem")
-
 func dropOSXPmem() error {
 	err := initBinFolder()
 	if err != nil {
@@ -38,6 +36,12 @@ func generateMemoryDump() {
 	err := dropOSXPmem()
 	if err != nil {
 		log.Error("Unable to find OSXPmem: ", err.Error())
+		return
+	}
+
+	osxpmemPath := filepath.Join(binPath, "osxpmem.app", "osxpmem")
+	if _, err := os.Stat(osxpmemPath); os.IsNotExist(err) {
+		log.Error("Unable to find OSXPmem at path: ", osxpmemPath)
 		return
 	}
 }
