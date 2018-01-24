@@ -25,7 +25,7 @@ func dropOSXPmem() error {
 		return err
 	}
 
-	err = exec.Command("unzip", "-d", binPath).Run()
+	err = exec.Command("unzip", zipPath, "-d", binPath).Run()
 	if err != nil {
 		return err
 	}
