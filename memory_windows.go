@@ -41,7 +41,7 @@ func generateMemoryDump() {
 
 	err = exec.Command(winpmemPath, cmdArgs...).Run()
 	if err != nil {
-		log.Error("Unable to launch winpmem (are you running as Administrator?)")
+		log.Error("Unable to launch winpmem (are you running as Administrator?): ", err.Error())
 		return
 	}
 

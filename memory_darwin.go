@@ -52,7 +52,7 @@ func generateMemoryDump() {
 
 	err = exec.Command(osxpmemPath, cmdArgs...).Run()
 	if err != nil {
-		log.Error("Unable to launch OSXPmem (did you launch this with sudo?)")
+		log.Error("Unable to launch OSXPmem (did you launch this with sudo?): ", err.Error())
 		return
 	}
 
