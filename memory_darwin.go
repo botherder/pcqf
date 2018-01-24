@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"os/exec"
 	"io/ioutil"
 	"path/filepath"
@@ -24,10 +25,12 @@ func dropOSXPmem() error {
 		return err
 	}
 
-	err = exec.Command("unzip", "-d", binpath).Run()
+	err = exec.Command("unzip", "-d", binPath).Run()
 	if err != nil {
 		return err
 	}
+
+	return nil
 }
 
 func generateMemoryDump() {
