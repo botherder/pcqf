@@ -47,4 +47,14 @@ func generateMemoryDump() {
 		log.Error("Unable to find OSXPmem at path: ", osxpmemPath)
 		return
 	}
+
+	cmdArgs := []string{"--format", "raw", "--output", acq.Memory}
+
+	err = exec.Command(osxpmemPath, cmdArgs...).Run()
+	if err != nil {
+		log.Error("Unable to launch OSXPmem (did you launch this with sudo?)")
+		return
+	}
+
+	log.Info("Memory dump generated at ", acq.Memory)
 }
