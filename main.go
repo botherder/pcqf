@@ -43,7 +43,7 @@ func main() {
 
 	reader := bufio.NewReader(os.Stdin)
 	choice, _ := reader.ReadString('\n')
-	choice = strings.Replace(choice, "\r\n", "", -1)
+	choice = strings.TrimSpace(choice)
 	if choice == "y" || choice == "Y" {
 		generateMemoryDump()
 	} else {
