@@ -5,6 +5,7 @@ FLAGS_DARWIN	= GOOS=darwin
 FLAGS_WINDOWS	= GOOS=windows GOARCH=386 CC=i686-w64-mingw32-gcc CGO_ENABLED=1
 
 WINPMEM_URL		= https://github.com/google/rekall/releases/download/v1.5.1/winpmem-2.1.post4.exe
+OSXPMEM_URL		= https://github.com/google/rekall/releases/download/v1.5.1/osxpmem-2.1.post4.zip
 
 lint:
 	@echo "[lint] Running linter on codebase"
@@ -21,11 +22,26 @@ deps:
 	@go get -u github.com/shirou/gopsutil/mem
 	@echo "[deps] Depdenencies installed."
 
+darwin:
+	@mkdir -p $(BUILD_FOLDER)/darwin
+	@mkdir -p $(ASSETS_FOLDER)
+
+	@echo "[builder] Downloading OSXPmem"
+	@wget $(OSXPMEM_URL) -O assets/osxpmem.zip
+
+	@echo "[builder] Preparing assets"
+	@go-bindata -prefix $(ASSETS_FOLDER) -pkg main $(ASSETS_FOLDER)/osxpmem.zip
+
+	@echo "[builder] Building Darwin executable"
+	@go build --ldflags '-s -w' -o $(BUILD_FOLDER)/darwin/snoopdigg
+
+	@echo "[builder] Done!"
+
 windows:
 	@mkdir -p $(BUILD_FOLDER)/windows
 	@mkdir -p $(ASSETS_FOLDER)
 
-	@echo "[builder] Downloading Winpmem"
+	@echo "[builder] Downloading WinPmem"
 	@wget $(WINPMEM_URL) -O assets/winpmem.exe
 
 	@echo "[builder] Preparing assets"
