@@ -23,7 +23,7 @@ deps:
 	go get -u github.com/StackExchange/wmi
 	go get -u github.com/mattn/go-shellwords
 	go get -u github.com/shirou/w32
-	@echo "[deps] Depdenencies installed."
+	@echo "[deps] Dependencies installed."
 
 darwin:
 	@mkdir -p $(BUILD_FOLDER)/darwin
