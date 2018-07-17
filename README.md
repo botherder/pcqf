@@ -100,3 +100,7 @@ Or alternatively at:
     nex@amnesty.org
     PGP ID: 0x8F28F25BAAA39B12
     PGP Fingerprint: E063 75E6 B9E2 6745 656C  63DE 8F28 F25B AAA3 9B12
+
+## Credits
+
+Shovel icon by Marco Livolsi from the Noun Project
