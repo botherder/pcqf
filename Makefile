@@ -20,9 +20,12 @@ deps:
 	go get -u github.com/matishsiao/goInfo
 	go get -u github.com/satori/go.uuid
 	go get -u github.com/shirou/gopsutil/mem
-	go get -u github.com/StackExchange/wmi
 	go get -u github.com/mattn/go-shellwords
 	go get -u github.com/shirou/w32
+	go get -u github.com/akavel/rsrc
+	go get -u github.com/go-ole/go-ole
+	go get -u github.com/go-ole/go-ole/oleutil
+	go get -u github.com/StackExchange/wmi
 	@echo "[deps] Dependencies installed."
 
 darwin:
