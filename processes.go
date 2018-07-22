@@ -1,19 +1,19 @@
 package main
 
 import (
+	"encoding/json"
+	log "github.com/Sirupsen/logrus"
+	"github.com/shirou/gopsutil/process"
 	"os"
 	"path/filepath"
-	"encoding/json"
-	"github.com/shirou/gopsutil/process"
-	log "github.com/Sirupsen/logrus"
 )
 
 type RunningProcess struct {
-	Pid int32 `json:"pid"`
-	Name string `json:"name"`
-	ParentPid int32 `json:"ppid"`
-	Exe string `json:"exe"`
-	Cmdline string `json:"cmd"`
+	Pid       int32  `json:"pid"`
+	Name      string `json:"name"`
+	ParentPid int32  `json:"ppid"`
+	Exe       string `json:"exe"`
+	Cmdline   string `json:"cmd"`
 }
 
 func generateProcessList() {
@@ -33,11 +33,11 @@ func generateProcessList() {
 		cmd, _ := proc.Cmdline()
 
 		entry := RunningProcess{
-			Pid: proc.Pid,
-			Name: name,
+			Pid:       proc.Pid,
+			Name:      name,
 			ParentPid: ppid,
-			Exe: exe,
-			Cmdline: cmd,
+			Exe:       exe,
+			Cmdline:   cmd,
 		}
 		processList = append(processList, entry)
 	}

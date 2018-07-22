@@ -1,25 +1,25 @@
 package main
 
 import (
-	"os"
 	"fmt"
-	"time"
-	"path/filepath"
 	"github.com/satori/go.uuid"
+	"os"
+	"path/filepath"
+	"time"
 )
 
 // Acquisition defines the basic properties we want to store.
 type Acquisition struct {
-	UUID string
-	Date string
-	Time string
+	UUID         string
+	Date         string
+	Time         string
 	ComputerName string
 	ComputerUser string
-	Platform string
-	Folder string
-	Storage string
-	Autoruns string
-	Memory string
+	Platform     string
+	Folder       string
+	Storage      string
+	Autoruns     string
+	Memory       string
 }
 
 func (a *Acquisition) Initialize() {

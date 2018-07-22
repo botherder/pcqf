@@ -1,13 +1,13 @@
 package main
 
 import (
-	"os"
-	"fmt"
 	"bufio"
-	"strings"
+	"fmt"
 	log "github.com/Sirupsen/logrus"
 	"github.com/mattn/go-colorable"
 	"github.com/shirou/gopsutil/mem"
+	"os"
+	"strings"
 )
 
 var acq Acquisition

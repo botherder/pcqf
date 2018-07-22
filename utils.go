@@ -1,11 +1,11 @@
 package main
 
 import (
-	"os"
 	"fmt"
-	"path"
-	"os/user"
 	"github.com/matishsiao/goInfo"
+	"os"
+	"os/user"
+	"path"
 )
 
 // Get current working directory.

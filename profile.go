@@ -1,10 +1,10 @@
 package main
 
 import (
-	"os"
-	"path/filepath"
 	"encoding/json"
 	log "github.com/Sirupsen/logrus"
+	"os"
+	"path/filepath"
 )
 
 func generateProfile() {

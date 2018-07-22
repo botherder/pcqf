@@ -1,15 +1,15 @@
 package main
 
 import (
-	"os"
-	"io"
 	"fmt"
-	"path/filepath"
+	log "github.com/Sirupsen/logrus"
 	"github.com/botherder/go-files"
 	"golang.org/x/crypto/openpgp"
 	"golang.org/x/crypto/openpgp/armor"
 	"golang.org/x/crypto/openpgp/packet"
-	log "github.com/Sirupsen/logrus"
+	"io"
+	"os"
+	"path/filepath"
 )
 
 func logEncryptFail(err error) {

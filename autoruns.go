@@ -1,13 +1,13 @@
 package main
 
 import (
-	"os"
-	"fmt"
-	"path/filepath"
 	"encoding/json"
-	"github.com/botherder/go-files"
-	"github.com/botherder/go-autoruns"
+	"fmt"
 	log "github.com/Sirupsen/logrus"
+	"github.com/botherder/go-autoruns"
+	"github.com/botherder/go-files"
+	"os"
+	"path/filepath"
 )
 
 func generateAutoruns() {
@@ -17,7 +17,7 @@ func generateAutoruns() {
 	autoruns := autoruns.Autoruns()
 
 	// Make backup of autoruns executables.
-	for _, autorun := range(autoruns) {
+	for _, autorun := range autoruns {
 		if _, err := os.Stat(autorun.ImagePath); err == nil {
 			copyName := fmt.Sprintf("%s_%s.bin", autorun.MD5, autorun.ImageName)
 			copyPath := filepath.Join(acq.Autoruns, copyName)
