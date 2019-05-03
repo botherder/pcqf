@@ -13,19 +13,7 @@ lint:
 
 deps:
 	@echo "[deps] Installing dependencies..."
-	go get -u github.com/Sirupsen/logrus
-	go get -u github.com/mattn/go-colorable
-	go get -u github.com/botherder/go-files
-	go get -u github.com/botherder/go-autoruns
-	go get -u github.com/matishsiao/goInfo
-	go get -u github.com/satori/go.uuid
-	go get -u github.com/shirou/gopsutil/mem
-	go get -u github.com/mattn/go-shellwords
-	go get -u github.com/shirou/w32
-	go get -u github.com/akavel/rsrc
-	go get -u github.com/go-ole/go-ole
-	go get -u github.com/go-ole/go-ole/oleutil
-	go get -u github.com/StackExchange/wmi
+	go mod download
 	@echo "[deps] Dependencies installed."
 
 darwin:
