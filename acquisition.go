@@ -39,6 +39,7 @@ type Acquisition struct {
 	Memory       string
 }
 
+// Initialize will create the required acquisition folders and set permissions.
 func (a *Acquisition) Initialize() {
 	uuid := uuid.NewV4()
 	a.UUID = uuid.String()

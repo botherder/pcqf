@@ -25,6 +25,7 @@ import (
 	"path/filepath"
 )
 
+// RunningProcess defines the relevant details about a process.
 type RunningProcess struct {
 	Pid       int32  `json:"pid"`
 	Name      string `json:"name"`

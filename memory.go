@@ -22,7 +22,7 @@ import (
 	"path/filepath"
 )
 
-var binPath string = filepath.Join(getCwd(), "bin")
+var binPath = filepath.Join(getCwd(), "bin")
 
 func initBinFolder() error {
 	if _, err := os.Stat(binPath); os.IsNotExist(err) {
