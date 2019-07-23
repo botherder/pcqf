@@ -19,8 +19,8 @@ package main
 
 import (
 	"encoding/json"
-	log "github.com/sirupsen/logrus"
 	"github.com/shirou/gopsutil/process"
+	log "github.com/sirupsen/logrus"
 	"os"
 	"path/filepath"
 )

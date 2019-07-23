@@ -20,9 +20,9 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	log "github.com/sirupsen/logrus"
 	"github.com/botherder/go-autoruns"
 	"github.com/botherder/go-files"
+	log "github.com/sirupsen/logrus"
 	"os"
 	"path/filepath"
 )
