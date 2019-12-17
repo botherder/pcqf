@@ -14,17 +14,21 @@ lint:
 deps:
 	@echo "[deps] Installing dependencies..."
 	go mod download
+	go get github.com/akavel/rsrc
+	go get -u github.com/jteeuwen/go-bindata/...
 	@echo "[deps] Dependencies installed."
 
 darwin:
 	@mkdir -p $(BUILD_FOLDER)/darwin
 	@mkdir -p $(ASSETS_FOLDER)
 
-	@echo "[builder] Downloading OSXPmem"
-	@wget $(OSXPMEM_URL) -O assets/osxpmem.zip
+	@if [ ! -f $(ASSETS_FOLDER)/osxpmem.zip ]; then          \
+		echo "[builder] Downloading OSXPmem";                \
+		wget $(OSXPMEM_URL) -O $(ASSETS_FOLDER)/osxpmem.zip; \
+	fi
 
 	@echo "[builder] Preparing assets"
-	@go-bindata -prefix $(ASSETS_FOLDER) -pkg main $(ASSETS_FOLDER)/osxpmem.zip
+	@go-bindata -prefix $(ASSETS_FOLDER) $(ASSETS_FOLDER)/
 
 	@echo "[builder] Building Darwin executable"
 	@go build --ldflags '-s -w' -o $(BUILD_FOLDER)/darwin/snoopdigg
@@ -35,11 +39,13 @@ windows:
 	@mkdir -p $(BUILD_FOLDER)/windows
 	@mkdir -p $(ASSETS_FOLDER)
 
-	@echo "[builder] Downloading WinPmem"
-	@wget $(WINPMEM_URL) -O assets/winpmem.exe
+	@if [ ! -f $(ASSETS_FOLDER)/winpmem.exe ]; then          \
+		echo "[builder] Downloading WinPmem";                \
+		wget $(WINPMEM_URL) -O $(ASSETS_FOLDER)/winpmem.exe; \
+	fi
 
 	@echo "[builder] Preparing assets"
-	@go-bindata -prefix $(ASSETS_FOLDER) -pkg main $(ASSETS_FOLDER)/winpmem.exe
+	@go-bindata -prefix $(ASSETS_FOLDER) $(ASSETS_FOLDER)/
 	@rsrc -manifest snoopdigg.manifest -ico snoopdigg.ico -o rsrc.syso
 
 	@echo "[builder] Building Windows executable"
