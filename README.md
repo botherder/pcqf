@@ -55,6 +55,8 @@ by a numeric suffix.
       the system.
     - An `autoruns/` folder containing copies of the files and executables
       marked for persistence in the previous JSON file.
+    - A `procexes/` folder containing copies of the executables of running
+      processes.
     - If successful, a `memory/` folder will contain a physical memory
       dump as well as some metadata.
 
