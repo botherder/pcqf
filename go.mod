@@ -4,8 +4,8 @@ go 1.13
 
 require (
 	github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d // indirect
-	github.com/akavel/rsrc v0.8.0 // indirect
-	github.com/botherder/go-autoruns v0.0.0-20200530215510-d8670cf1a229
+	github.com/akavel/rsrc v0.9.0 // indirect
+	github.com/botherder/go-autoruns v1.1.0
 	github.com/botherder/go-files v0.0.0-20180205213231-2246e61e05ec
 	github.com/capnspacehook/taskmaster v0.0.0-20200801200112-36a5819a9b50 // indirect
 	github.com/go-ole/go-ole v1.2.4 // indirect
