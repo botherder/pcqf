@@ -34,10 +34,8 @@ computers with significant RAM.
 2. Mount the USB device on the computer to inspect. Browse to the Snoopdigg
 folder and double-click on the tool. It should ask you to allow the application
 to run with Administrator privileges, which are required to obtain a memory
-snapshot.
-
-On Mac computers, you will need to launch Snoopdigg from the terminal with the
-commands `chmod +x snoopdigg` and `sudo ./snoopdigg`.
+snapshot. On Mac computers, you will need to launch Snoopdigg from the terminal
+with the commands `chmod +x snoopdigg` and `sudo ./snoopdigg`.
 
 3. Wait for the tool to complete its execution. You will see some log messages
 displayed in console. Pay particular attention in case it mentions problems
