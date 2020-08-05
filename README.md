@@ -92,12 +92,10 @@ although we're working to mitigate that.
 
 The memory acquisition does not work on Windows XP.
 
-## Contacts
+## Credits
 
 Snoopdigg is developed by Claudio "nex" Guarnieri. You can find my contact
 details [here](https://nex.sx/contacts/).
-
-## Credits
 
 Shovel icon by Marco Livolsi from the Noun Project
 
