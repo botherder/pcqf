@@ -20,11 +20,12 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"os"
+	"path/filepath"
+
 	"github.com/botherder/go-autoruns"
 	"github.com/botherder/go-files"
 	log "github.com/sirupsen/logrus"
-	"os"
-	"path/filepath"
 )
 
 func generateAutoruns() {

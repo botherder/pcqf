@@ -20,11 +20,12 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"os"
+	"strings"
+
 	"github.com/mattn/go-colorable"
 	"github.com/shirou/gopsutil/mem"
 	log "github.com/sirupsen/logrus"
-	"os"
-	"strings"
 )
 
 var acq Acquisition

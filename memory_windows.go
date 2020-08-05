@@ -18,10 +18,11 @@
 package main
 
 import (
-	log "github.com/sirupsen/logrus"
 	"io/ioutil"
 	"os/exec"
 	"path/filepath"
+
+	log "github.com/sirupsen/logrus"
 )
 
 var winpmemPath string = filepath.Join(binPath, "winpmem.exe")

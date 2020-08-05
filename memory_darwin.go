@@ -18,11 +18,12 @@
 package main
 
 import (
-	log "github.com/sirupsen/logrus"
 	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
+
+	log "github.com/sirupsen/logrus"
 )
 
 func dropOSXPmem() error {

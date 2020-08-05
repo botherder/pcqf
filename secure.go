@@ -19,14 +19,15 @@ package main
 
 import (
 	"fmt"
+	"io"
+	"os"
+	"path/filepath"
+
 	"github.com/botherder/go-files"
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/crypto/openpgp"
 	"golang.org/x/crypto/openpgp/armor"
 	"golang.org/x/crypto/openpgp/packet"
-	"io"
-	"os"
-	"path/filepath"
 )
 
 func logEncryptFail(err error) {
