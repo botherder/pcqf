@@ -2,6 +2,9 @@
 
 # Snoopdigg
 
+[![Build Status](https://travis-ci.org/botherder/snoopdigg.svg?branch=master)](https://travis-ci.org/botherder/snoopdigg)
+[![Go Report Card][goreportcard-badge]][goreportcard]
+
 Snoopdigg is a simple tool to automate some basic steps to acquire some
 evidence of compromise from Windows computers. Snoopdigg is normally intended for
 trainers, researchers, and incident responders without a particular background
@@ -104,3 +107,6 @@ Or alternatively at:
 ## Credits
 
 Shovel icon by Marco Livolsi from the Noun Project
+
+[goreportcard]: https://goreportcard.com/report/github.com/botherder/snoopdigg
+[goreportcard-badge]: https://goreportcard.com/badge/github.com/botherder/snoopdigg
