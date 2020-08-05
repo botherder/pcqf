@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2019 Claudio Guarnieri.
+// Copyright (c) 2017-2020 Claudio Guarnieri.
 //
 // This file is part of Snoopdigg.
 //

@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2019 Claudio Guarnieri.
+// Copyright (c) 2017-2020 Claudio Guarnieri.
 //
 // This file is part of Snoopdigg.
 //
@@ -38,7 +38,7 @@ func main() {
 	fmt.Println("|___/_| |_|\\___/ \\___/| .__/ \\__,_|_|\\__, |\\__, |")
 	fmt.Println("                      | |             __/ | __/ |     ")
 	fmt.Println("                      |_|            |___/ |___/      ")
-	fmt.Println("    (c) 2017-2019 Claudio Guarnieri (nex@nex.sx)      ")
+	fmt.Println("    (c) 2017-2020 Claudio Guarnieri (nex@nex.sx)      ")
 	fmt.Println("                                                      ")
 
 	// Set up the logging.

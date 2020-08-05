@@ -31,7 +31,7 @@ darwin:
 	@go-bindata -prefix $(ASSETS_FOLDER) $(ASSETS_FOLDER)/
 
 	@echo "[builder] Building Darwin executable"
-	@go build --ldflags '-s -w' -o $(BUILD_FOLDER)/darwin/snoopdigg
+	@$(FLAGS_DARWIN) go build --ldflags '-s -w' -o $(BUILD_FOLDER)/darwin/snoopdigg
 
 	@echo "[builder] Done!"
 
