@@ -94,17 +94,8 @@ The memory acquisition does not work on Windows XP.
 
 ## Contacts
 
-Snoopdigg was developed by Claudio "nex" Guarnieri. I can be reached at:
-
-    nex@nex.sx
-    PGP ID: 0xD166F1667359D880
-    PGP Fingerprint: 0521 6F3B 8684 8A30 3C2F  E37D D166 F166 7359 D880
-
-Or alternatively at:
-
-    nex@amnesty.org
-    PGP ID: 0x8F28F25BAAA39B12
-    PGP Fingerprint: E063 75E6 B9E2 6745 656C  63DE 8F28 F25B AAA3 9B12
+Snoopdigg is developed by Claudio "nex" Guarnieri. You can find my contact
+details [here](https://nex.sx/contacts/).
 
 ## Credits
 
