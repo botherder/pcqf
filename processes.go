@@ -23,6 +23,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/botherder/go-files"
 	"github.com/shirou/gopsutil/process"
 	log "github.com/sirupsen/logrus"
 )
@@ -61,10 +62,10 @@ func generateProcessList() {
 		}
 		processList = append(processList, entry)
 
-		if _, err := os.Stat(exe); err == nil {
-			copyName := fmt.Sprintf("%d_%s.bin", pid, name)
+		if _, err := os.Stat(entry.Exe); err == nil {
+			copyName := fmt.Sprintf("%d_%s.bin", entry.Pid, entry.Name)
 			copyPath := filepath.Join(acq.ProcExes, copyName)
-			files.Copy(exe, copyPath)
+			files.Copy(entry.Exe, copyPath)
 		}
 	}
 
