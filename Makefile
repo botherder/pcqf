@@ -18,7 +18,7 @@ deps:
 	go get -u github.com/jteeuwen/go-bindata/...
 	@echo "[deps] Dependencies installed."
 
-darwin:
+darwin: deps
 	@mkdir -p $(BUILD_FOLDER)/darwin
 	@mkdir -p $(ASSETS_FOLDER)
 
@@ -35,7 +35,7 @@ darwin:
 
 	@echo "[builder] Done!"
 
-windows:
+windows: deps
 	@mkdir -p $(BUILD_FOLDER)/windows
 	@mkdir -p $(ASSETS_FOLDER)
 
