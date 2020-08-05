@@ -31,7 +31,7 @@ darwin: deps
 	@go-bindata -prefix $(ASSETS_FOLDER) $(ASSETS_FOLDER)/
 
 	@echo "[builder] Building Darwin executable"
-	@$(FLAGS_DARWIN) go build --ldflags '-s -w' -o $(BUILD_FOLDER)/darwin/snoopdigg
+	@$(FLAGS_DARWIN) go build --ldflags '-s -w' -o $(BUILD_FOLDER)/darwin/snoopdigg_darwin_x86_64
 
 	@echo "[builder] Done!"
 
@@ -49,7 +49,7 @@ windows: deps
 	@rsrc -manifest snoopdigg.manifest -ico snoopdigg.ico -o rsrc.syso
 
 	@echo "[builder] Building Windows executable"
-	@$(FLAGS_WINDOWS) go build --ldflags '-s -w -extldflags "-static"' -o $(BUILD_FOLDER)/windows/snoopdigg.exe
+	@$(FLAGS_WINDOWS) go build --ldflags '-s -w -extldflags "-static"' -o $(BUILD_FOLDER)/windows/snoopdigg_windows_386.exe
 
 	@echo "[builder] Done!"
 

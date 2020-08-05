@@ -2,8 +2,8 @@ language: go
 sudo: required
 
 go:
-- '1.13'
-- '1.14'
+- "1.13"
+- "1.14"
 - master
 
 matrix:
@@ -21,3 +21,15 @@ install:
 script:
 - env GO111MODULE=on make windows
 - env GO111MODULE=on make darwin
+
+deploy:
+    provider: releases
+    api_key:
+        secure: 1jEhdtC95NH0tCo34Qx4g0/dZtrLmgdNxU3MfS6r0a2Dg5zj1GetVlxcZ5+h1EjPLbXC/5wke5cihpje4FZcnTJ5s2SUn9PATH5o0KYvvZL0G7qReSpCBhvC+yRlmDW0FygrR4D8Lq8DzlxxscwPEjhsaV8y2k7Un7fqky296MuHOAOdiCcCJjcT0BmMrzpJQJbe/L10aDbTIgb/ARFJlhGvwAv3k2Ie/DbriyK/gfmxQx3whXlHVmnPa1p8LcO/dI7cXyK235c7HMSix6vNohqYBfftglhAf7upVHb2LnhRMSuGmsTQfZkxKax1K1jOkfCFpAVALGu2nYFXDP+ZnRXRgMFPz5mg4JhYk3Vm7JLgKfwmhPhykSz55eDDOESq0wq9ticGslNYIkhzY1C+gtB5sAI6A4I7XsKO3jH8ThYX1deNqsOiGiHpQp1TNeaN2+cBaDnv/nI21FSDoiks+TatRP4GPU7TknSO28ZMhoK1bhLMKvrLJs/wZCkOKuqbDwxS+vUokz9ysTpHUM1xom9Th9LccDfr8Y6+/j7G4UchOe8sSvzVL6aDxIBe5Klzkl6ZCn7ggGowJ9MVUAzkVnS1kDx27y5XKvF0pZov2oXmebXKRbKAxh0XmEGH9WnvTSJMTGNVB5rOVv06eY4w9+cyU0uQtY/AJccKeryWZyE=
+    file:
+        - "build/windows/snoopdigg_windows_386.exe"
+        - "build/darwin/snoopdigg_darwin_x86_64"
+    on:
+        tags: true
+        repo: botherder/snoopdigg
+    skip_cleanup: "true"
