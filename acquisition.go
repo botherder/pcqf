@@ -19,10 +19,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/satori/go.uuid"
 	"os"
 	"path/filepath"
 	"time"
+
+	"github.com/satori/go.uuid"
 )
 
 // Acquisition defines the basic properties we want to store.
@@ -36,6 +37,7 @@ type Acquisition struct {
 	Folder       string
 	Storage      string
 	Autoruns     string
+	ProcExes     string
 	Memory       string
 }
 
@@ -68,29 +70,25 @@ func (a *Acquisition) Initialize() {
 	for {
 		if _, err := os.Stat(tmpStorage); os.IsNotExist(err) {
 			break
-		} else {
-			tmpFolder = fmt.Sprintf("%s_%d", baseFolder, counter)
-			tmpStorage = filepath.Join(baseStorage, tmpFolder)
-			counter++
 		}
+
+		tmpFolder = fmt.Sprintf("%s_%d", baseFolder, counter)
+		tmpStorage = filepath.Join(baseStorage, tmpFolder)
+		counter++
 	}
 
 	// Proceeds creating all the required subfolders.
 	a.Folder = tmpFolder
 	a.Storage = tmpStorage
 	a.Autoruns = filepath.Join(a.Storage, "autoruns")
+	a.ProcExes = filepath.Join(a.Storage, "procexes")
 	a.Memory = filepath.Join(a.Storage, "memory")
 
-	err := os.MkdirAll(a.Storage, 0755)
-	if err != nil {
-		panic(err)
-	}
-	err = os.Mkdir(a.Autoruns, 0755)
-	if err != nil {
-		panic(err)
-	}
-	err = os.Mkdir(a.Memory, 0755)
-	if err != nil {
-		panic(err)
+	folders := []string{a.Autoruns, a.ProcExes, a.Memory}
+	for _, folder := range folders {
+		err := os.MkdirAll(folder, 0755)
+		if err != nil {
+			panic(err)
+		}
 	}
 }

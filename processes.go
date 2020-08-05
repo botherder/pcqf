@@ -19,10 +19,12 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/shirou/gopsutil/process"
-	log "github.com/sirupsen/logrus"
+	"fmt"
 	"os"
 	"path/filepath"
+
+	"github.com/shirou/gopsutil/process"
+	log "github.com/sirupsen/logrus"
 )
 
 // RunningProcess defines the relevant details about a process.
@@ -58,6 +60,12 @@ func generateProcessList() {
 			Cmdline:   cmd,
 		}
 		processList = append(processList, entry)
+
+		if _, err := os.Stat(exe); err == nil {
+			copyName := fmt.Sprintf("%d_%s.bin", pid, name)
+			copyPath := filepath.Join(acq.ProcExes, copyName)
+			files.Copy(exe, copyPath)
+		}
 	}
 
 	processListPath := filepath.Join(acq.Storage, "processlist.json")
