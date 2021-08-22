@@ -11,7 +11,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/botherder/go-files"
+	"github.com/botherder/go-savetime/files"
 	"github.com/botherder/pcqf/utils"
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/crypto/openpgp"
