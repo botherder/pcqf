@@ -24,9 +24,9 @@ pcqf doesn't require any configuration or parameters, it just needs to be execut
 
     - A `profile.json` file containing basic information on the computer system.
     - A `process_list.json` file containing a list of running processes.
-    - An `autoruns.json` file containing a list of all items with persistence on the system.
-    - An `autoruns/` folder containing copies of the files and executables marked for persistence in the previous JSON file.
-    - A `process_binaries/` folder containing copies of the executables of running processes.
+    - A `autoruns.json` file containing a list of all items with persistence on the system.
+    - A `autoruns_bins/` folder containing copies of the files and executables marked for persistence in the previous JSON file.
+    - A `process_bins/` folder containing copies of the executables of running processes.
     - If successful, a `memory/` folder will contain a physical memory dump as well as some metadata.
 
 ## Encryption & Potential Threats
