@@ -15,7 +15,7 @@ lint:
 	@golint ./...
 
 clean:
-	rm -f ./cmd/bindata.go
+	rm -f ./acquisition/bindata.go
 	rm -f rsrc.syso
 	rm -rf $(ASSETS_FOLDER)
 	rm -rf $(BUILD_FOLDER)
@@ -42,7 +42,7 @@ windows: deps mkdirs
 	fi
 
 	@echo "[builder] Preparing assets"
-	@go-bindata -o ./cmd/bindata.go -prefix $(ASSETS_FOLDER) $(ASSETS_FOLDER)/
+	@go-bindata -pkg acquisition -o ./acquisition/bindata.go -prefix $(ASSETS_FOLDER) $(ASSETS_FOLDER)/
 	@rsrc -manifest pcqf.manifest -o rsrc.syso
 
 	@echo "[builder] Building Windows executable"
@@ -59,7 +59,7 @@ darwin: deps mkdirs
 	fi
 
 	@echo "[builder] Preparing assets"
-	@go-bindata  -o ./cmd/bindata.go -prefix $(ASSETS_FOLDER) $(ASSETS_FOLDER)/
+	@go-bindata -pkg acquisition -o ./acquisition/bindata.go -prefix $(ASSETS_FOLDER) $(ASSETS_FOLDER)/
 
 	@echo "[builder] Building Darwin executable"
 	@$(FLAGS_DARWIN) go build --ldflags '-s -w' -o $(BUILD_FOLDER)/pcqf_darwin ./cmd/

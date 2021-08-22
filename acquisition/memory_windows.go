@@ -16,7 +16,7 @@ import (
 var winpmemPath string = filepath.Join(binPath, "winpmem.exe")
 
 func dropWinpmem() error {
-	err := a.initBinFolder()
+	err := initBinFolder()
 	if err != nil {
 		return err
 	}
@@ -43,7 +43,7 @@ func (a *Acquisition) GenerateMemoryDump() {
 		return
 	}
 
-	cmdArgs := []string{"--format", "raw", "--output", acq.Memory}
+	cmdArgs := []string{"--format", "raw", "--output", a.Memory}
 
 	err = exec.Command(winpmemPath, cmdArgs...).Run()
 	if err != nil {
@@ -51,5 +51,5 @@ func (a *Acquisition) GenerateMemoryDump() {
 		return
 	}
 
-	log.Info("Memory dump generated at ", acq.Memory)
+	log.Info("Memory dump generated at ", a.Memory)
 }
