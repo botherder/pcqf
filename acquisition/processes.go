@@ -3,7 +3,7 @@
 // Use of this software is governed by the MVT License 1.1 that can be found at
 //   https://license.mvt.re/1.1/
 
-package main
+package acquisition
 
 import (
 	"encoding/json"
@@ -25,7 +25,7 @@ type RunningProcess struct {
 	Cmdline   string `json:"cmd"`
 }
 
-func generateProcessList() {
+func (a *Acquisition) GenerateProcessList() {
 	log.Info("Generating list of running processes...")
 
 	procs, err := process.Processes()
@@ -52,12 +52,12 @@ func generateProcessList() {
 
 		if _, err := os.Stat(entry.Exe); err == nil {
 			copyName := fmt.Sprintf("%d_%s.bin", entry.Pid, entry.Name)
-			copyPath := filepath.Join(acq.ProcExes, copyName)
+			copyPath := filepath.Join(a.ProcsExes, copyName)
 			files.Copy(entry.Exe, copyPath)
 		}
 	}
 
-	procsListPath := filepath.Join(acq.Storage, "process_list.json")
+	procsListPath := filepath.Join(a.Storage, "process_list.json")
 	procsListJSON, err := os.Create(procsListPath)
 	if err != nil {
 		log.Error("Unable to save process list to file: ", err.Error())

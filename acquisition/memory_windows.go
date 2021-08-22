@@ -3,7 +3,7 @@
 // Use of this software is governed by the MVT License 1.1 that can be found at
 //   https://license.mvt.re/1.1/
 
-package main
+package acquisition
 
 import (
 	"io/ioutil"
@@ -16,7 +16,7 @@ import (
 var winpmemPath string = filepath.Join(binPath, "winpmem.exe")
 
 func dropWinpmem() error {
-	err := initBinFolder()
+	err := a.initBinFolder()
 	if err != nil {
 		return err
 	}
@@ -34,7 +34,7 @@ func dropWinpmem() error {
 	return nil
 }
 
-func generateMemoryDump() {
+func (a *Acquisition) GenerateMemoryDump() {
 	log.Info("Taking a snapshot of the system memory...")
 
 	err := dropWinpmem()

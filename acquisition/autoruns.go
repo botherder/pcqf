@@ -3,7 +3,7 @@
 // Use of this software is governed by the MVT License 1.1 that can be found at
 //   https://license.mvt.re/1.1/
 
-package main
+package acquisition
 
 import (
 	"encoding/json"
@@ -16,7 +16,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-func generateAutoruns() {
+func (a *Acquisition) GenerateAutoruns() {
 	log.Info("Identifying files marked for persistence...")
 
 	// Fetch autoruns.
@@ -26,13 +26,13 @@ func generateAutoruns() {
 	for _, autorun := range autoruns {
 		if _, err := os.Stat(autorun.ImagePath); err == nil {
 			copyName := fmt.Sprintf("%s_%s.bin", autorun.MD5, autorun.ImageName)
-			copyPath := filepath.Join(acq.Autoruns, copyName)
+			copyPath := filepath.Join(a.AutorunsExes, copyName)
 			files.Copy(autorun.ImagePath, copyPath)
 		}
 	}
 
 	// Store the json list to file.
-	autorunsJSONPath := filepath.Join(acq.Storage, "autoruns.json")
+	autorunsJSONPath := filepath.Join(a.Storage, "autoruns.json")
 	autorunsJSON, err := os.Create(autorunsJSONPath)
 	if err != nil {
 		log.Error("Unable to save autoruns to file: ", err.Error())

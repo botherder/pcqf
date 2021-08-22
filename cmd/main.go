@@ -38,9 +38,9 @@ func main() {
 
 	log.Info("Started acquisition ", acq.Folder)
 
-	generateProfile()
-	generateProcessList()
-	generateAutoruns()
+	acq.GenerateProfile()
+	acq.GenerateProcessList()
+	acq.GenerateAutoruns()
 
 	virt, _ := mem.VirtualMemory()
 	virtTotal := virt.Total / (1000 * 1000 * 1000)
@@ -52,7 +52,7 @@ func main() {
 
 	takeMemory, err := prompt.Run()
 	if err == nil && takeMemory == "y" {
-		generateMemoryDump()
+		acq.GenerateMemoryDump()
 	} else {
 		log.Info("Skipping memory acquisition.")
 	}

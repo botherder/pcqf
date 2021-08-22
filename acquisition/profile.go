@@ -3,7 +3,7 @@
 // Use of this software is governed by the MVT License 1.1 that can be found at
 //   https://license.mvt.re/1.1/
 
-package main
+package acquisition
 
 import (
 	"encoding/json"
@@ -13,10 +13,10 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-func generateProfile() {
+func (a *Acquisition) GenerateProfile() {
 	log.Info("Generating profile...")
 
-	profilePath := filepath.Join(acq.Storage, "profile.json")
+	profilePath := filepath.Join(a.Storage, "profile.json")
 	profile, err := os.Create(profilePath)
 	if err != nil {
 		log.Error("Unable to create profile: ", err.Error())
@@ -24,7 +24,7 @@ func generateProfile() {
 	}
 	defer profile.Close()
 
-	buf, _ := json.MarshalIndent(acq, "", "    ")
+	buf, _ := json.MarshalIndent(a, "", "    ")
 
 	profile.WriteString(string(buf[:]))
 	profile.Sync()

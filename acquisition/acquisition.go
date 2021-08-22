@@ -25,8 +25,8 @@ type Acquisition struct {
 	Platform     string
 	Folder       string
 	Storage      string
-	Autoruns     string
-	ProcExes     string
+	AutorunsExes string
+	ProcsExes    string
 	Memory       string
 }
 
@@ -61,15 +61,15 @@ func New() (*Acquisition, error) {
 	// Proceeds creating all the required subfolders.
 	acq.Folder = tmpFolder
 	acq.Storage = tmpStorage
-	acq.Autoruns = filepath.Join(acq.Storage, "autoruns")
-	acq.ProcExes = filepath.Join(acq.Storage, "process_binaries")
+	acq.AutorunsExes = filepath.Join(acq.Storage, "autoruns_bins")
+	acq.ProcsExes = filepath.Join(acq.Storage, "process_bins")
 	acq.Memory = filepath.Join(acq.Storage, "memory")
 
 	return &acq, nil
 }
 
 func (a *Acquisition) CreateFolders() error {
-	folders := []string{a.Autoruns, a.ProcExes, a.Memory}
+	folders := []string{a.Autoruns, a.ProcsExes, a.Memory}
 	for _, folder := range folders {
 		err := os.MkdirAll(folder, 0755)
 		if err != nil {

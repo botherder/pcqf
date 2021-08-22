@@ -3,7 +3,7 @@
 // Use of this software is governed by the MVT License 1.1 that can be found at
 //   https://license.mvt.re/1.1/
 
-package main
+package acquisition
 
 import (
 	"io/ioutil"
@@ -39,7 +39,7 @@ func dropOSXPmem() error {
 	return nil
 }
 
-func generateMemoryDump() {
+func (a *Acquisition) GenerateMemoryDump() {
 	log.Info("Taking a snapshot of the system memory...")
 
 	err := dropOSXPmem()
@@ -54,7 +54,7 @@ func generateMemoryDump() {
 		return
 	}
 
-	cmdArgs := []string{"--format", "raw", "--output", acq.Memory}
+	cmdArgs := []string{"--format", "raw", "--output", a.Memory}
 
 	err = exec.Command(osxpmemPath, cmdArgs...).Run()
 	if err != nil {
@@ -62,5 +62,5 @@ func generateMemoryDump() {
 		return
 	}
 
-	log.Info("Memory dump generated at ", acq.Memory)
+	log.Info("Memory dump generated at ", a.Memory)
 }
