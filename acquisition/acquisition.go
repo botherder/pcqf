@@ -69,7 +69,7 @@ func New() (*Acquisition, error) {
 }
 
 func (a *Acquisition) CreateFolders() error {
-	folders := []string{a.Autoruns, a.ProcsExes, a.Memory}
+	folders := []string{a.AutorunsExes, a.ProcsExes, a.Memory}
 	for _, folder := range folders {
 		err := os.MkdirAll(folder, 0755)
 		if err != nil {
