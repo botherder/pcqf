@@ -4,7 +4,7 @@ go 1.15
 
 require (
 	github.com/botherder/go-autoruns v1.1.0
-	github.com/botherder/go-savetime v1.2.1
+	github.com/botherder/go-savetime v1.3.0
 	github.com/manifoldco/promptui v0.8.0
 	github.com/matishsiao/goInfo v0.0.0-20200404012835-b5f882ee2288
 	github.com/mattn/go-colorable v0.1.8

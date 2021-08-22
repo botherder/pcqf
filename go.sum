@@ -4,8 +4,8 @@ github.com/botherder/go-autoruns v1.1.0 h1:o02RZarOpwKDpC2zVUGzUBHP1yLeMKp21GQoG
 github.com/botherder/go-autoruns v1.1.0/go.mod h1:q60u6Av0DDpgLnJHryrdvbZo0c2jMvKYcwjvL9w07Eg=
 github.com/botherder/go-files v0.0.0-20180205213231-2246e61e05ec h1:6wCpKuh17Jm90ZrOUl+0YO8j6jcL1QvIkB8hr880LOY=
 github.com/botherder/go-files v0.0.0-20180205213231-2246e61e05ec/go.mod h1:8JCpIxlrLzl+lgMtSD3hOXMSCqppohyOYSu0IOw5GoI=
-github.com/botherder/go-savetime v1.2.1 h1:18go6cOTqf56AcZW6PlBkQxBCmJT2w0Mm97HaG1wu6o=
-github.com/botherder/go-savetime v1.2.1/go.mod h1:99qkqo9nTaGQWwpj8/Uddt0vmsOASWfyLWdqqUceFYE=
+github.com/botherder/go-savetime v1.3.0 h1:IDiYdsLsLwC9T+esfpcG6EqfYJ/bc/VugtYLjXGhwGw=
+github.com/botherder/go-savetime v1.3.0/go.mod h1:99qkqo9nTaGQWwpj8/Uddt0vmsOASWfyLWdqqUceFYE=
 github.com/capnspacehook/taskmaster v0.0.0-20200801200112-36a5819a9b50 h1:o4XYFsME6Xz2BtlsMF2PtWBRCFHTPLrBKYsBvSWvEp8=
 github.com/capnspacehook/taskmaster v0.0.0-20200801200112-36a5819a9b50/go.mod h1:qDaGsiBtJLEZgymWezDT2rW+5Nnj2T9EEEfia26JJLM=
 github.com/chzyer/logex v1.1.10 h1:Swpa1K6QvQznwJRcfTfQJmTE72DqScAa40E+fbHEXEE=
