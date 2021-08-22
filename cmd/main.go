@@ -30,12 +30,6 @@ func main() {
 		return
 	}
 
-	err = acq.CreateFolders()
-	if err != nil {
-		log.Error(err)
-		return
-	}
-
 	log.Info("Started acquisition ", acq.Folder)
 
 	acq.GenerateProfile()

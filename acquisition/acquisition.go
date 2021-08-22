@@ -65,10 +65,15 @@ func New() (*Acquisition, error) {
 	acq.ProcsExes = filepath.Join(acq.Storage, "process_bins")
 	acq.Memory = filepath.Join(acq.Storage, "memory")
 
+	err := acq.createFolders()
+	if err != nil {
+		return nil, err
+	}
+
 	return &acq, nil
 }
 
-func (a *Acquisition) CreateFolders() error {
+func (a *Acquisition) createFolders() error {
 	folders := []string{a.AutorunsExes, a.ProcsExes, a.Memory}
 	for _, folder := range folders {
 		err := os.MkdirAll(folder, 0755)
