@@ -1,19 +1,7 @@
-// Copyright (c) 2017-2020 Claudio Guarnieri.
-//
-// This file is part of Snoopdigg.
-//
-// Snoopdigg is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Snoopdigg is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Snoopdigg.  If not, see <https://www.gnu.org/licenses/>.
+// pcqf - PC Quick Forensics
+// Copyright (c) 2021 Claudio Guarnieri.
+// Use of this software is governed by the MVT License 1.1 that can be found at
+//   https://license.mvt.re/1.1/
 
 package main
 
@@ -23,8 +11,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/botherder/go-files"
-	"github.com/shirou/gopsutil/process"
+	"github.com/botherder/go-savetime/files"
+	"github.com/shirou/gopsutil/v3/process"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -46,7 +34,7 @@ func generateProcessList() {
 		return
 	}
 
-	var processList []RunningProcess
+	var procsList []RunningProcess
 	for _, proc := range procs {
 		name, _ := proc.Name()
 		ppid, _ := proc.Ppid()
@@ -60,7 +48,7 @@ func generateProcessList() {
 			Exe:       exe,
 			Cmdline:   cmd,
 		}
-		processList = append(processList, entry)
+		procsList = append(procsList, entry)
 
 		if _, err := os.Stat(entry.Exe); err == nil {
 			copyName := fmt.Sprintf("%d_%s.bin", entry.Pid, entry.Name)
@@ -69,18 +57,18 @@ func generateProcessList() {
 		}
 	}
 
-	processListPath := filepath.Join(acq.Storage, "processlist.json")
-	processListJSON, err := os.Create(processListPath)
+	procsListPath := filepath.Join(acq.Storage, "process_list.json")
+	procsListJSON, err := os.Create(procsListPath)
 	if err != nil {
 		log.Error("Unable to save process list to file: ", err.Error())
 		return
 	}
-	defer processListJSON.Close()
+	defer procsListJSON.Close()
 
-	buf, _ := json.MarshalIndent(processList, "", "    ")
+	buf, _ := json.MarshalIndent(procsList, "", "    ")
 
-	processListJSON.WriteString(string(buf[:]))
-	processListJSON.Sync()
+	procsListJSON.WriteString(string(buf[:]))
+	procsListJSON.Sync()
 
 	log.Info("Process list generated successfully!")
 }
