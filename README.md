@@ -4,9 +4,9 @@
 
 pcqf (PC Quick Forensics) is a simple tool to automate the acquisition of some evidence of compromise from Windows computers. pcqf is normally intended for trainers, researchers, and incident responders without a particular background in information security and computer forensics.
 
-pcqf doesn't require any configuration or parameters, it just needs to be executed with Administrator privileges. Once launched, the software automatically harvests and collects copies of the executables of running processes and of the applications automatically starting at launch. Optionally, it can also take a full-memory dump.
-
 Often, it is not possible (because of logistical reasons, lack of appropriate hardware, or simply privacy issues) to do a full disk image of the computer. pcqf allows to gather sufficient data to initiate and investigation, while minimizing exposure of personal data and without requiring a particular expertise in computer forensics.
+
+pcqf doesn't require any configuration or parameters, it just needs to be executed with Administrator privileges. Once launched, the software automatically harvests and collects copies of the executables of running processes and of the applications automatically starting at launch. Optionally, it can also take a full-memory dump.
 
 [Download pcqf](https://github.com/botherder/pcqf/releases/latest)
 
