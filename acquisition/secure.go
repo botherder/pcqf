@@ -16,7 +16,6 @@ import (
 	"filippo.io/age"
 	"github.com/botherder/go-savetime/files"
 	"github.com/botherder/pcqf/utils"
-	log "github.com/sirupsen/logrus"
 )
 
 func (a *Acquisition) StoreSecurely() error {
@@ -25,19 +24,19 @@ func (a *Acquisition) StoreSecurely() error {
 		return nil
 	}
 
-	log.Info("You provided an age public key, storing the acquisition securely.")
+	fmt.Println("You provided an age public key, storing the acquisition securely.")
 
 	zipFileName := fmt.Sprintf("%s.zip", a.UUID)
 	zipFilePath := filepath.Join(utils.GetCwd(), zipFileName)
 
-	log.Info("Compressing the acquisition folder. This might take a while...")
+	fmt.Println("Compressing the acquisition folder. This might take a while...")
 
 	err := files.Zip(a.StoragePath, zipFilePath)
 	if err != nil {
 		return err
 	}
 
-	log.Info("Encrypting the compressed archive. This might take a while...")
+	fmt.Println("Encrypting the compressed archive. This might take a while...")
 
 	publicKey, err := ioutil.ReadFile(keyFilePath)
 	if err != nil {
@@ -80,7 +79,7 @@ func (a *Acquisition) StoreSecurely() error {
 	zipFile.Close()
 	encFile.Close()
 
-	log.Info("Acquisition successfully encrypted at ", encFilePath)
+	fmt.Println("Acquisition successfully encrypted at ", encFilePath)
 
 	// TODO: we should securely wipe the files.
 	err = os.Remove(zipFilePath)

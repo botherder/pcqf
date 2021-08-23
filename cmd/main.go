@@ -11,41 +11,53 @@ import (
 
 	"github.com/botherder/pcqf/acquisition"
 	"github.com/manifoldco/promptui"
-	"github.com/mattn/go-colorable"
 	"github.com/shirou/gopsutil/mem"
-	log "github.com/sirupsen/logrus"
+	"github.com/i582/cfmt/cmd/cfmt"
 )
 
+func printError(desc string, err error) {
+	cfmt.Printf("{{ERROR:}}::red|bold %s: {{%s}}::italic\n",
+		desc, err.Error())
+}
+
 func init() {
-	log.SetFormatter(&log.TextFormatter{ForceColors: true})
-	log.SetOutput(colorable.NewColorableStdout())
+	cfmt.Print(`
+	    {{                        ____  }}::green
+	    {{      ____  _________  / __/  }}::yellow
+	    {{     / __ \/ ___/ __ '/ /_    }}::red
+	    {{    / /_/ / /__/ /_/ / __/    }}::magenta
+	    {{   / .___/\___/\__, /_/       }}::blue
+	    {{  /_/            /_/          }}::cyan
+	`)
+	cfmt.Println("\t\tpcqf - PC Quick Forensics")
+	cfmt.Println()
 }
 
 func main() {
 	acq, err := acquisition.New()
 	if err != nil {
-		log.Error(err)
+		cfmt.Println(err)
 		return
 	}
 
-	log.Info("Started acquisition ", acq.UUID)
+	cfmt.Printf("Started acquisition {{%s}}::magenta|underline\n", acq.UUID)
 
-	log.Info("Generating system profile...")
+	fmt.Println("Generating system profile...")
 	err = acq.GenerateProfile()
 	if err != nil {
-		log.Error("Failed to generate system profile: %s", err.Error())
+		printError("Failed to generate system profile", err)
 	}
 
-	log.Info("Generating process list...")
+	fmt.Println("Generating process list...")
 	err = acq.GenerateProcessList()
 	if err != nil {
-		log.Error("Failed to generate process list: %s", err.Error())
+		printError("Failed to generate process list", err)
 	}
 
-	log.Info("Generating list of persistent software...")
+	fmt.Println("Generating list of persistent software...")
 	err = acq.GenerateAutoruns()
 	if err != nil {
-		log.Error("Failed to generate list of persistent software: %s", err.Error())
+		printError("Failed to generate list of persistent software", err)
 	}
 
 	virt, _ := mem.VirtualMemory()
@@ -60,18 +72,18 @@ func main() {
 	if err == nil && takeMemory == "y" {
 		acq.GenerateMemoryDump()
 	} else {
-		log.Info("Skipping memory acquisition.")
+		fmt.Println("Skipping memory acquisition.")
 	}
 
 	err = acq.StoreSecurely()
 	if err != nil {
-		log.Error("Something failed while encrypting the acquisition: ", err.Error())
-		log.Warning("The secure storage of the acquisition folder failed! The data is unencrypted!")
+		printError("Something failed while encrypting the acquisition", err)
+		cfmt.Println("{{WARNING: The secure storage of the acquisition folder failed! The data is unencrypted!}}::red|bold")
 	}
 
-	log.Info("Acquisition completed.")
+	fmt.Println("Acquisition completed.")
 
-	log.Info("Press Enter to finish ...")
+	fmt.Println("Press Enter to finish ...")
 	var b = make([]byte, 1)
 	os.Stdin.Read(b)
 }
