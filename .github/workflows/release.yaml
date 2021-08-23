@@ -10,11 +10,8 @@ jobs:
     name: Release Go Binary
     runs-on: ubuntu-latest
     steps:
-    - name: Adding Go bin to PATH
-      run: |
-        echo "::set-env name=GOPATH::$(go env GOPATH)"
-        echo "::add-path::$(go env GOPATH)/bin"
     - uses: actions/checkout@v2
+    - uses: actions/setup-go@v2
     - name: Build Windows binary
       run: make windows
     - name: Build Linux binary
