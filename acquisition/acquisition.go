@@ -6,7 +6,6 @@
 package acquisition
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 	"time"
@@ -22,7 +21,6 @@ type Acquisition struct {
 	ComputerName     string    `json:"computer_name"`
 	ComputerUser     string    `json:"computer_user"`
 	Platform         string    `json:"platform"`
-	FolderName       string    `json:"folder_name"`
 	StoragePath      string    `json:"storage_path"`
 	AutorunsExesPath string    `json:"autoruns_exes_path"`
 	ProcsExesPath    string    `json:"procs_exes_path"`
@@ -38,32 +36,7 @@ func New() (*Acquisition, error) {
 		Platform:     utils.GetOperatingSystem(),
 	}
 
-	// This is some spaghetti code to generate the folder name for the current
-	// acquisition. It will just try to append a number until it finds a
-	// combination that has not been used yet.
-	cwd := utils.GetCwd()
-
-	tmpFolderName := acq.UUID
-	tmpStoragePath := filepath.Join(cwd, acq.UUID)
-
-	counter := 1
-	for {
-		// If the current tmpStoragePath does not exist, it is fine to use,
-		// so we break out of the loop.
-		if _, err := os.Stat(tmpStoragePath); os.IsNotExist(err) {
-			break
-		}
-
-		// Otherwise, we try again appending the current counter to the
-		// folder name.
-		tmpFolderName = fmt.Sprintf("%s_%d", acq.UUID, counter)
-		tmpStoragePath = filepath.Join(cwd, tmpFolderName)
-		counter++
-	}
-
-	// Proceeds creating all the required subfolders.
-	acq.FolderName = tmpFolderName
-	acq.StoragePath = tmpStoragePath
+	acq.StoragePath = filepath.Join(utils.GetCwd(), acq.UUID)
 	acq.AutorunsExesPath = filepath.Join(acq.StoragePath, "autoruns_bins")
 	acq.ProcsExesPath = filepath.Join(acq.StoragePath, "process_bins")
 	acq.MemoryPath = filepath.Join(acq.StoragePath, "memory")

@@ -18,7 +18,7 @@ pcqf doesn't require any configuration or parameters, it just needs to be execut
 
 3. Wait for the tool to complete its execution. You will see some log messages displayed in console. Pay particular attention in case it mentions problems for example in relation to the generation of the memory dump.
 
-4. Once completed, you will find a new folder called "acquisitions". Inside this folder you will see a folder for each acquisition you made. The folders will be named in the format `YYYY-MM-DD_\<COMPUTER NAME\>`. You can perform multiple acquisitions from the same computer: new folders will be distinguished by a numeric suffix.
+4. Once completed, you will find a new folder named with a UUID. Inside this folder you will see a folder for each acquisition you made. You can perform multiple acquisitions from the same computer: each acquisition will have a different UUID.
 
 5. Each acquisition folder will contain the following files:
 
@@ -35,9 +35,11 @@ Carrying the pcqf acquisitions on an unencrypted drive might expose yourself, an
 
 Ideally you should have the drive fully encrypted, but that might not always be possible. You could also consider placing pcqf inside a [VeraCrypt](https://www.veracrypt.fr/) container and carry with it a copy of VeraCrypt to mount it. However, VeraCrypt containers are typically protected only by a password, which you might be forced to provide.
 
-Alternatively, pcqf allows to encrypt each acquisition with a provided PGP public key. Preferably, this public key belongs to a keypair for which you don't possess, or at least carry, the private key. In this way, you would not be capable of decrypting the acquisitions data even under duress.
+Alternatively, pcqf allows to encrypt each acquisition with a provided [age](https://age-encryption.org) public key. Preferably, this public key belongs to a keypair for which the end-user does not possess, or at least carry, the private key. In this way, the end-user would not be able to decrypt the acquired data even under duress.
 
-If you place a file called `public.asc` in the same folder as the pcqf executable, pcqf will automatically attempt to compress and encrypt each acquisition and delete the original unencrypted copies. The encrypted file will be named with an undescriptive unique identifier.
+If you place a file called `key.txt` in the same folder as the pcqf executable, pcqf will automatically attempt to compress and encrypt each acquisition and delete the original unencrypted copies.
+
+
 
 Bear in mind, it is always possible that at least some portion of the unencrypted data could be recovered through advanced forensics techniques - although we're working to mitigate that.
 

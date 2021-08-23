@@ -30,7 +30,7 @@ func main() {
 		return
 	}
 
-	log.Info("Started acquisition ", acq.Folder)
+	log.Info("Started acquisition ", acq.UUID)
 
 	acq.GenerateProfile()
 	acq.GenerateProcessList()
