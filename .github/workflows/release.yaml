@@ -12,6 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-go@v2
+    - run: sudo apt-get install go-bindata
     - name: Build Windows binary
       run: make windows
     - name: Build Linux binary
