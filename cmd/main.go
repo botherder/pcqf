@@ -10,9 +10,9 @@ import (
 	"os"
 
 	"github.com/botherder/pcqf/acquisition"
+	"github.com/i582/cfmt/cmd/cfmt"
 	"github.com/manifoldco/promptui"
 	"github.com/shirou/gopsutil/mem"
-	"github.com/i582/cfmt/cmd/cfmt"
 )
 
 func init() {

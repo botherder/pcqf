@@ -6,6 +6,7 @@
 package acquisition
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os"
 	"os/exec"
