@@ -16,8 +16,6 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-var acq acquisition.Acquisition
-
 func init() {
 	log.SetFormatter(&log.TextFormatter{ForceColors: true})
 	log.SetOutput(colorable.NewColorableStdout())
