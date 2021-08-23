@@ -39,6 +39,6 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: build/pcqf_darwin
-        asset_name: pcqf_mac
+        asset_name: pcqf_darwin
         tag: ${{ github.ref }}
         overwrite: true        
