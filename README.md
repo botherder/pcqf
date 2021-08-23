@@ -54,7 +54,7 @@ If you place a file called `key.txt` in the same folder as the pcqf executable, 
 Once you have retrieved an encrypted acquisition file, you can decrypt it with age like so:
 
 ```
-$ age --decrypt -i ~/path/to/privatekey.txt -o b51e49b9-02ae-457f-95d1-f83ae8029488.zip b51e49b9-02ae-457f-95d1-f83ae8029488.zip.age
+$ age --decrypt -i ~/path/to/privatekey.txt -o <UUID>.zip <UUID>.zip.age
 ```
 
 Bear in mind, it is always possible that at least some portion of the unencrypted data could be recovered through advanced forensics techniques - although we're working to mitigate that.
