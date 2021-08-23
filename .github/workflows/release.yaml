@@ -9,9 +9,9 @@ jobs:
   releases-matrix:
     name: Release Go Binary
     runs-on: ubuntu-latest
+    env:
+      PATH: $PATH:$GOPATH/bin
     steps:
-    - name: Installing dependencies
-      run: sudo apt-get install go-bindata
     - uses: actions/checkout@v2
     - name: Build Windows binary
       run: make windows
