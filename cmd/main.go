@@ -15,11 +15,6 @@ import (
 	"github.com/i582/cfmt/cmd/cfmt"
 )
 
-func printError(desc string, err error) {
-	cfmt.Printf("{{ERROR:}}::red|bold %s: {{%s}}::italic\n",
-		desc, err.Error())
-}
-
 func init() {
 	cfmt.Print(`
 	    {{                        ____  }}::green
@@ -31,6 +26,16 @@ func init() {
 	`)
 	cfmt.Println("\t\tpcqf - PC Quick Forensics")
 	cfmt.Println()
+}
+
+func printError(desc string, err error) {
+	cfmt.Printf("{{ERROR:}}::red|bold %s: {{%s}}::italic\n",
+		desc, err.Error())
+}
+
+func systemPause() {
+	cfmt.Println("Press {{Enter}}::bold|green to finish ...")
+	os.Stdin.Read(make([]byte, 1))
 }
 
 func main() {
@@ -83,7 +88,5 @@ func main() {
 
 	fmt.Println("Acquisition completed.")
 
-	fmt.Println("Press Enter to finish ...")
-	var b = make([]byte, 1)
-	os.Stdin.Read(b)
+	systemPause()
 }
