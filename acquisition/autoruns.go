@@ -13,12 +13,9 @@ import (
 
 	"github.com/botherder/go-autoruns"
 	"github.com/botherder/go-savetime/files"
-	log "github.com/sirupsen/logrus"
 )
 
-func (a *Acquisition) GenerateAutoruns() {
-	log.Info("Identifying files marked for persistence...")
-
+func (a *Acquisition) GenerateAutoruns() error {
 	// Fetch autoruns.
 	autoruns := autoruns.Autoruns()
 
@@ -35,8 +32,7 @@ func (a *Acquisition) GenerateAutoruns() {
 	autorunsJSONPath := filepath.Join(a.StoragePath, "autoruns.json")
 	autorunsJSON, err := os.Create(autorunsJSONPath)
 	if err != nil {
-		log.Error("Unable to save autoruns to file: ", err.Error())
-		return
+		return fmt.Errorf("failed to save autoruns to file: %v", err)
 	}
 	defer autorunsJSON.Close()
 
@@ -46,5 +42,5 @@ func (a *Acquisition) GenerateAutoruns() {
 	autorunsJSON.WriteString(string(buf[:]))
 	autorunsJSON.Sync()
 
-	log.Info("Autoruns collected successfully!")
+	return nil
 }

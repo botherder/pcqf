@@ -10,8 +10,6 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
-
-	log "github.com/sirupsen/logrus"
 )
 
 func dropOSXPmem() error {
@@ -39,28 +37,25 @@ func dropOSXPmem() error {
 	return nil
 }
 
-func (a *Acquisition) GenerateMemoryDump() {
-	log.Info("Taking a snapshot of the system memory...")
-
+func (a *Acquisition) GenerateMemoryDump() error {
 	err := dropOSXPmem()
 	if err != nil {
-		log.Error("Unable to find OSXPmem: ", err.Error())
-		return
+		return fmt.Errorf("failed to create osxpmem: %v", err)
 	}
 
 	osxpmemPath := filepath.Join(binPath, "osxpmem.app", "osxpmem")
 	if _, err := os.Stat(osxpmemPath); os.IsNotExist(err) {
-		log.Error("Unable to find OSXPmem at path: ", osxpmemPath)
-		return
+		return fmt.Errorf("failed to find osxpmem at path %s: %v",
+			osxpmemPath, err)
 	}
 
 	cmdArgs := []string{"--format", "raw", "--output", a.MemoryPath}
 
 	err = exec.Command(osxpmemPath, cmdArgs...).Run()
 	if err != nil {
-		log.Error("Unable to launch OSXPmem (did you launch this with sudo?): ", err.Error())
-		return
+		return fmt.Errorf("failed to launch osxpmem (did you launch this with sudo?): %v",
+			err)
 	}
 
-	log.Info("Memory dump generated at ", a.Memory)
+	return nil
 }

@@ -13,7 +13,6 @@ import (
 
 	"github.com/botherder/go-savetime/files"
 	"github.com/shirou/gopsutil/v3/process"
-	log "github.com/sirupsen/logrus"
 )
 
 // RunningProcess defines the relevant details about a process.
@@ -25,13 +24,10 @@ type RunningProcess struct {
 	Cmdline   string `json:"cmd"`
 }
 
-func (a *Acquisition) GenerateProcessList() {
-	log.Info("Generating list of running processes...")
-
+func (a *Acquisition) GenerateProcessList() error {
 	procs, err := process.Processes()
 	if err != nil {
-		log.Error("Unable to create process list: ", err.Error())
-		return
+		return fmt.Errorf("failed to create process list: %v", err)
 	}
 
 	var procsList []RunningProcess
@@ -60,8 +56,8 @@ func (a *Acquisition) GenerateProcessList() {
 	procsListPath := filepath.Join(a.StoragePath, "process_list.json")
 	procsListJSON, err := os.Create(procsListPath)
 	if err != nil {
-		log.Error("Unable to save process list to file: ", err.Error())
-		return
+		return fmt.Errorf("failed to save process list to file %s: %v",
+			procsListPath, err)
 	}
 	defer procsListJSON.Close()
 
@@ -70,5 +66,5 @@ func (a *Acquisition) GenerateProcessList() {
 	procsListJSON.WriteString(string(buf[:]))
 	procsListJSON.Sync()
 
-	log.Info("Process list generated successfully!")
+	return nil
 }

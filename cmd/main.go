@@ -32,9 +32,23 @@ func main() {
 
 	log.Info("Started acquisition ", acq.UUID)
 
-	acq.GenerateProfile()
-	acq.GenerateProcessList()
-	acq.GenerateAutoruns()
+	log.Info("Generating system profile...")
+	err = acq.GenerateProfile()
+	if err != nil {
+		log.Error("Failed to generate system profile: %s", err.Error())
+	}
+
+	log.Info("Generating process list...")
+	err = acq.GenerateProcessList()
+	if err != nil {
+		log.Error("Failed to generate process list: %s", err.Error())
+	}
+
+	log.Info("Generating list of persistent software...")
+	err = acq.GenerateAutoruns()
+	if err != nil {
+		log.Error("Failed to generate list of persistent software: %s", err.Error())
+	}
 
 	virt, _ := mem.VirtualMemory()
 	virtTotal := virt.Total / (1000 * 1000 * 1000)

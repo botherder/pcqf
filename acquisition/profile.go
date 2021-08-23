@@ -7,20 +7,16 @@ package acquisition
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
 	"path/filepath"
-
-	log "github.com/sirupsen/logrus"
 )
 
-func (a *Acquisition) GenerateProfile() {
-	log.Info("Generating profile...")
-
+func (a *Acquisition) GenerateProfile() error {
 	profilePath := filepath.Join(a.StoragePath, "profile.json")
 	profile, err := os.Create(profilePath)
 	if err != nil {
-		log.Error("Unable to create profile: ", err.Error())
-		return
+		return fmt.Errorf("failed to create profile: %v", err)
 	}
 	defer profile.Close()
 
@@ -29,5 +25,5 @@ func (a *Acquisition) GenerateProfile() {
 	profile.WriteString(string(buf[:]))
 	profile.Sync()
 
-	log.Info("Profile generated!")
+	return nil
 }

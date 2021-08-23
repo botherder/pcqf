@@ -6,11 +6,10 @@
 package acquisition
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os/exec"
 	"path/filepath"
-
-	log "github.com/sirupsen/logrus"
 )
 
 var winpmemPath string = filepath.Join(binPath, "winpmem.exe")
@@ -34,22 +33,18 @@ func dropWinpmem() error {
 	return nil
 }
 
-func (a *Acquisition) GenerateMemoryDump() {
-	log.Info("Taking a snapshot of the system memory...")
-
+func (a *Acquisition) GenerateMemoryDump() error {
 	err := dropWinpmem()
 	if err != nil {
-		log.Error("Unable to find winpmem: ", err.Error())
-		return
+		return fmt.Errorf("failed to create winpmem: %v", err)
 	}
 
 	cmdArgs := []string{"--format", "raw", "--output", a.MemoryPath}
 
 	err = exec.Command(winpmemPath, cmdArgs...).Run()
 	if err != nil {
-		log.Error("Unable to launch winpmem (are you running as Administrator?): ", err.Error())
-		return
+		return fmt.Errorf("failed to launch winpmem (are you running as Administrator?): %v", err)
 	}
 
-	log.Info("Memory dump generated at ", a.Memory)
+	return nil
 }
