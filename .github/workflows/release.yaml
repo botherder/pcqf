@@ -9,9 +9,11 @@ jobs:
   releases-matrix:
     name: Release Go Binary
     runs-on: ubuntu-latest
-    env:
-      PATH: $PATH:$GOPATH/bin
     steps:
+    - name: Adding Go bin to PATH
+      run: |
+        echo "::set-env name=GOPATH::$(go env GOPATH)"
+        echo "::add-path::$(go env GOPATH)/bin"
     - uses: actions/checkout@v2
     - name: Build Windows binary
       run: make windows
