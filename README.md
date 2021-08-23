@@ -10,6 +10,18 @@ pcqf doesn't require any configuration or parameters, it just needs to be execut
 
 [Download pcqf](https://github.com/botherder/pcqf/releases/latest)
 
+## Build
+
+Executable binaries for Linux, Windows and Mac should be available in the [latest release](https://github.com/botherder/pcqf/releases/latest). In case you have issues running the binary you might want to build it by yourself.
+
+In order to build pcqf you will need Go 1.15+ installed. You will also need to install `make`. When ready you can clone the repository and run any of the following commands, for your platform of choice:
+
+    make linux
+    make darwin
+    make windows
+
+These commands will generate binaries in a *build/* folder.
+
 ## How to use
 
 1. Download pcqf on a USB device. Make sure that the device has enough space to store all the acquisitions you are going to make. It is advisable to format the USB device as NTFS, in case you will end up dumping memory of computers with significant RAM.
