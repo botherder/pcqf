@@ -11,8 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-go@v2
-    - run: sudo apt-get install go-bindata
+    - run: echo $(go env GOPATH)/bin >> $GITHUB_PATH
     - name: Build Windows binary
       run: make windows
     - name: Build Linux binary

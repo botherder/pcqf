@@ -29,7 +29,7 @@ deps:
 	@echo "[deps] Installing dependencies..."
 	go mod download
 	go get github.com/akavel/rsrc
-	go get -u github.com/go-bindata/go-bindata/...
+	go get -u github.com/go-bindata/go-bindata/v3/...
 	go mod tidy
 	@echo "[deps] Dependencies installed."
 
