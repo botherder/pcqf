@@ -17,24 +17,22 @@ import (
 
 // Acquisition defines the basic properties we want to store.
 type Acquisition struct {
-	UUID         string
-	Date         string
-	Time         string
-	ComputerName string
-	ComputerUser string
-	Platform     string
-	Folder       string
-	Storage      string
-	AutorunsExes string
-	ProcsExes    string
-	Memory       string
+	UUID         string `json:"uuid"`
+	Datetime     time.Time `json:"datetime"`
+	ComputerName string `json:"computer_name"`
+	ComputerUser string `json:"computer_user"`
+	Platform     string `json:"platform"`
+	Folder       string `json:"folder"`
+	StoragePath      string `json:"storage"`
+	AutorunsExesPath string `json:"autoruns_exes"`
+	ProcsExesPath    string `json:"procs_exes"`
+	MemoryPath       string `json:"memory"`
 }
 
 func New() (*Acquisition, error) {
 	acq := Acquisition{
 		UUID:         uuid.NewV4().String(),
-		Date:         time.Now().UTC().Format("2006-02-01"),
-		Time:         time.Now().UTC().Format("15:04:05"),
+		Datetime:     time.Now().UTC()
 		ComputerName: utils.GetComputerName(),
 		ComputerUser: utils.GetUserName(),
 		Platform:     utils.GetOperatingSystem(),
@@ -44,7 +42,7 @@ func New() (*Acquisition, error) {
 	// acquisition. It will just try to append a number until it finds a
 	// combination that has not been used yet.
 	baseFolder := fmt.Sprintf("%s_%s", acq.Date, acq.ComputerName)
-	baseStorage := filepath.Join(utils.GetCwd(), "acquisitions")
+	baseStorage := filepath.Join(utils.GetCwd())
 	tmpFolder := baseFolder
 	tmpStorage := filepath.Join(baseStorage, baseFolder)
 	counter := 1
@@ -60,10 +58,10 @@ func New() (*Acquisition, error) {
 
 	// Proceeds creating all the required subfolders.
 	acq.Folder = tmpFolder
-	acq.Storage = tmpStorage
-	acq.AutorunsExes = filepath.Join(acq.Storage, "autoruns_bins")
-	acq.ProcsExes = filepath.Join(acq.Storage, "process_bins")
-	acq.Memory = filepath.Join(acq.Storage, "memory")
+	acq.StoragePath = tmpStorage
+	acq.AutorunsExesPath = filepath.Join(acq.StoragePath, "autoruns_bins")
+	acq.ProcsExesPath = filepath.Join(acq.StoragePath, "process_bins")
+	acq.MemoryPath = filepath.Join(acq.StoragePath, "memory")
 
 	err := acq.createFolders()
 	if err != nil {
@@ -74,7 +72,7 @@ func New() (*Acquisition, error) {
 }
 
 func (a *Acquisition) createFolders() error {
-	folders := []string{a.AutorunsExes, a.ProcsExes, a.Memory}
+	folders := []string{a.AutorunsExesPath, a.ProcsExesPath, a.Memory}
 	for _, folder := range folders {
 		err := os.MkdirAll(folder, 0755)
 		if err != nil {
