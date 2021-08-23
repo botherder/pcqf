@@ -26,13 +26,13 @@ func (a *Acquisition) GenerateAutoruns() {
 	for _, autorun := range autoruns {
 		if _, err := os.Stat(autorun.ImagePath); err == nil {
 			copyName := fmt.Sprintf("%s_%s.bin", autorun.MD5, autorun.ImageName)
-			copyPath := filepath.Join(a.AutorunsExes, copyName)
+			copyPath := filepath.Join(a.AutorunsExesPath, copyName)
 			files.Copy(autorun.ImagePath, copyPath)
 		}
 	}
 
 	// Store the json list to file.
-	autorunsJSONPath := filepath.Join(a.Storage, "autoruns.json")
+	autorunsJSONPath := filepath.Join(a.StoragePath, "autoruns.json")
 	autorunsJSON, err := os.Create(autorunsJSONPath)
 	if err != nil {
 		log.Error("Unable to save autoruns to file: ", err.Error())

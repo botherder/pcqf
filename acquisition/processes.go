@@ -52,12 +52,12 @@ func (a *Acquisition) GenerateProcessList() {
 
 		if _, err := os.Stat(entry.Exe); err == nil {
 			copyName := fmt.Sprintf("%d_%s.bin", entry.Pid, entry.Name)
-			copyPath := filepath.Join(a.ProcsExes, copyName)
+			copyPath := filepath.Join(a.ProcsExesPath, copyName)
 			files.Copy(entry.Exe, copyPath)
 		}
 	}
 
-	procsListPath := filepath.Join(a.Storage, "process_list.json")
+	procsListPath := filepath.Join(a.StoragePath, "process_list.json")
 	procsListJSON, err := os.Create(procsListPath)
 	if err != nil {
 		log.Error("Unable to save process list to file: ", err.Error())

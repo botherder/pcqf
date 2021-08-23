@@ -51,7 +51,11 @@ func main() {
 		log.Info("Skipping memory acquisition.")
 	}
 
-	storeSecurely()
+	err = acq.StoreSecurely()
+	if err != nil {
+		log.Error("Something failed while encrypting the acquisition: ", err.Error())
+		log.Warning("The secure storage of the acquisition folder failed! The data is unencrypted!")
+	}
 
 	log.Info("Acquisition completed.")
 

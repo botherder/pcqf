@@ -54,7 +54,7 @@ func (a *Acquisition) GenerateMemoryDump() {
 		return
 	}
 
-	cmdArgs := []string{"--format", "raw", "--output", a.Memory}
+	cmdArgs := []string{"--format", "raw", "--output", a.MemoryPath}
 
 	err = exec.Command(osxpmemPath, cmdArgs...).Run()
 	if err != nil {

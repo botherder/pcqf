@@ -16,7 +16,7 @@ import (
 func (a *Acquisition) GenerateProfile() {
 	log.Info("Generating profile...")
 
-	profilePath := filepath.Join(a.Storage, "profile.json")
+	profilePath := filepath.Join(a.StoragePath, "profile.json")
 	profile, err := os.Create(profilePath)
 	if err != nil {
 		log.Error("Unable to create profile: ", err.Error())
