@@ -39,7 +39,7 @@ func (a *Acquisition) GenerateMemoryDump() error {
 		return fmt.Errorf("failed to create winpmem: %v", err)
 	}
 
-	cmdArgs := []string{"--format", "raw", "--output", a.MemoryPath}
+	cmdArgs := []string{filepath.Join(a.MemoryPath, "physmem.raw")}
 
 	err = exec.Command(winpmemPath, cmdArgs...).Run()
 	if err != nil {
