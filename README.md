@@ -30,7 +30,7 @@ These commands will generate binaries in a *build/* folder.
 
 3. Wait for the tool to complete its execution. You will see some log messages displayed in console. Pay particular attention in case it mentions problems for example in relation to the generation of the memory dump.
 
-4. Once completed, you will find a new folder named with a UUID. Inside this folder you will see a folder for each acquisition you made. You can perform multiple acquisitions from the same computer: each acquisition will have a different UUID.
+4. Once completed, you will find a new folder named with a UUID. You can perform multiple acquisitions from the same computer: each acquisition will have a different UUID.
 
 5. Each acquisition folder will contain the following files:
 
