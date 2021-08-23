@@ -39,7 +39,11 @@ Alternatively, pcqf allows to encrypt each acquisition with a provided [age](htt
 
 If you place a file called `key.txt` in the same folder as the pcqf executable, pcqf will automatically attempt to compress and encrypt each acquisition and delete the original unencrypted copies.
 
+Once you have retrieved an encrypted acquisition file, you can decrypt it with age like so:
 
+```
+$ age --decrypt -i ~/path/to/privatekey.txt -o b51e49b9-02ae-457f-95d1-f83ae8029488.zip b51e49b9-02ae-457f-95d1-f83ae8029488.zip.age
+```
 
 Bear in mind, it is always possible that at least some portion of the unencrypted data could be recovered through advanced forensics techniques - although we're working to mitigate that.
 
