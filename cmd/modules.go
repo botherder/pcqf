@@ -17,7 +17,7 @@ type Module func(acq *acquisition.Acquisition) error
 func RunModules() {
 	for _, mod := range GetModulesList() {
 		err := mod(acq)
-		if err != nil{
+		if err != nil {
 			printError(fmt.Sprintf("Unable to run module %s:",
 				utils.GetFunctionName(mod)), err)
 		}

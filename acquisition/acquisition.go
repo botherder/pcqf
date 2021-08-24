@@ -26,8 +26,8 @@ type Acquisition struct {
 
 func New() (*Acquisition, error) {
 	acq := Acquisition{
-		UUID:         uuid.NewV4().String(),
-		Datetime:     time.Now().UTC(),
+		UUID:     uuid.NewV4().String(),
+		Datetime: time.Now().UTC(),
 	}
 
 	acq.StoragePath = filepath.Join(utils.GetCwd(), acq.UUID)

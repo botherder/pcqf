@@ -11,8 +11,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/botherder/pcqf/acquisition"
 	"github.com/botherder/go-savetime/files"
+	"github.com/botherder/pcqf/acquisition"
 	"github.com/shirou/gopsutil/v3/process"
 )
 

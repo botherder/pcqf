@@ -11,9 +11,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/botherder/pcqf/acquisition"
 	"github.com/botherder/go-autoruns"
 	"github.com/botherder/go-savetime/files"
+	"github.com/botherder/pcqf/acquisition"
 )
 
 func GetAutoruns(acq *acquisition.Acquisition) error {

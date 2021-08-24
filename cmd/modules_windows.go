@@ -6,8 +6,8 @@
 package main
 
 import (
-	// "github.com/botherder/pcqf/modules/windows"
 	"github.com/botherder/pcqf/modules/crossplatform"
+	"github.com/botherder/pcqf/modules/windows"
 )
 
 func GetModulesList() []Module {
@@ -15,5 +15,6 @@ func GetModulesList() []Module {
 		crossplatform.GetAutoruns,
 		crossplatform.GetProcessList,
 		crossplatform.GenerateSystemInfo,
+		windows.GenerateMemoryDump,
 	}
 }

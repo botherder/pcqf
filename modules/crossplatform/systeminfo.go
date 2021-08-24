@@ -9,17 +9,17 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
-	"path/filepath"
 	"os/user"
+	"path/filepath"
 
 	"github.com/botherder/pcqf/acquisition"
 	"github.com/matishsiao/goInfo"
 )
 
 type Profile struct {
-	ComputerName     string    `json:"computer_name"`
-	ComputerUser     string    `json:"computer_user"`
-	Platform         string    `json:"platform"`
+	ComputerName string `json:"computer_name"`
+	ComputerUser string `json:"computer_user"`
+	Platform     string `json:"platform"`
 }
 
 func getUserName() string {
@@ -54,7 +54,7 @@ func GenerateSystemInfo(acq *acquisition.Acquisition) error {
 	profile := Profile{
 		ComputerName: getComputerName(),
 		ComputerUser: getUserName(),
-		Platform: getOperatingSystem(),
+		Platform:     getOperatingSystem(),
 	}
 
 	buf, _ := json.MarshalIndent(profile, "", "    ")

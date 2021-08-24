@@ -50,8 +50,6 @@ func main() {
 
 	RunModules()
 
-	GenerateMemoryDump(acq)
-
 	err = acq.StoreSecurely()
 	if err != nil {
 		printError("Something failed while encrypting the acquisition", err)
