@@ -11,9 +11,14 @@ import (
 
 	"github.com/botherder/pcqf/acquisition"
 	"github.com/i582/cfmt/cmd/cfmt"
-	"github.com/manifoldco/promptui"
-	"github.com/shirou/gopsutil/mem"
 )
+
+var acq *acquisition.Acquisition
+
+func printError(msg string, err error) {
+	cfmt.Printf("{{ERROR:}}::red|bold %s: {{%s}}::italic\n",
+		msg, err.Error())
+}
 
 func init() {
 	cfmt.Print(`
@@ -28,18 +33,14 @@ func init() {
 	cfmt.Println()
 }
 
-func printError(desc string, err error) {
-	cfmt.Printf("{{ERROR:}}::red|bold %s: {{%s}}::italic\n",
-		desc, err.Error())
-}
-
 func systemPause() {
 	cfmt.Println("Press {{Enter}}::bold|green to finish ...")
 	os.Stdin.Read(make([]byte, 1))
 }
 
 func main() {
-	acq, err := acquisition.New()
+	var err error
+	acq, err = acquisition.New()
 	if err != nil {
 		cfmt.Println(err)
 		return
@@ -47,38 +48,9 @@ func main() {
 
 	cfmt.Printf("Started acquisition {{%s}}::magenta|underline\n", acq.UUID)
 
-	fmt.Println("Generating system profile...")
-	err = acq.GenerateProfile()
-	if err != nil {
-		printError("Failed to generate system profile", err)
-	}
+	RunModules()
 
-	fmt.Println("Generating process list...")
-	err = acq.GenerateProcessList()
-	if err != nil {
-		printError("Failed to generate process list", err)
-	}
-
-	fmt.Println("Generating list of persistent software...")
-	err = acq.GenerateAutoruns()
-	if err != nil {
-		printError("Failed to generate list of persistent software", err)
-	}
-
-	virt, _ := mem.VirtualMemory()
-	virtTotal := virt.Total / (1000 * 1000 * 1000)
-
-	prompt := promptui.Prompt{
-		Label:     fmt.Sprintf("Take a memory snapshot (it would take circa %d GB of space)", virtTotal),
-		IsConfirm: true,
-	}
-
-	takeMemory, err := prompt.Run()
-	if err == nil && takeMemory == "y" {
-		acq.GenerateMemoryDump()
-	} else {
-		fmt.Println("Skipping memory acquisition.")
-	}
+	GenerateMemoryDump(acq)
 
 	err = acq.StoreSecurely()
 	if err != nil {

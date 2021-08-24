@@ -33,12 +33,20 @@ jobs:
         file: build/pcqf_linux
         asset_name: pcqf_linux
         tag: ${{ github.ref }}
-        overwrite: true        
-    - name: Upload Darwin binary
+        overwrite: true
+    - name: Upload Darwin amd64 binary
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: build/pcqf_darwin
-        asset_name: pcqf_darwin
+        file: build/pcqf_darwin_amd64
+        asset_name: pcqf_darwin_amd64
         tag: ${{ github.ref }}
-        overwrite: true        
+        overwrite: true
+    - name: Upload Darwin arm64 binary
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: build/pcqf_darwin_arm64
+        asset_name: pcqf_darwin_arm64
+        tag: ${{ github.ref }}
+        overwrite: true

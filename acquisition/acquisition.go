@@ -18,9 +18,6 @@ import (
 type Acquisition struct {
 	UUID             string    `json:"uuid"`
 	Datetime         time.Time `json:"datetime"`
-	ComputerName     string    `json:"computer_name"`
-	ComputerUser     string    `json:"computer_user"`
-	Platform         string    `json:"platform"`
 	StoragePath      string    `json:"storage_path"`
 	AutorunsExesPath string    `json:"autoruns_exes_path"`
 	ProcsExesPath    string    `json:"procs_exes_path"`
@@ -31,9 +28,6 @@ func New() (*Acquisition, error) {
 	acq := Acquisition{
 		UUID:         uuid.NewV4().String(),
 		Datetime:     time.Now().UTC(),
-		ComputerName: utils.GetComputerName(),
-		ComputerUser: utils.GetUserName(),
-		Platform:     utils.GetOperatingSystem(),
 	}
 
 	acq.StoragePath = filepath.Join(utils.GetCwd(), acq.UUID)

@@ -3,13 +3,15 @@
 // Use of this software is governed by the MVT License 1.1 that can be found at
 //   https://license.mvt.re/1.1/
 
-package acquisition
+package main
 
 import (
 	"fmt"
 	"io/ioutil"
 	"os/exec"
 	"path/filepath"
+
+	"github.com/botherder/pcqf/acquisition"
 )
 
 var winpmemPath string = filepath.Join(binPath, "winpmem.exe")
@@ -33,13 +35,18 @@ func dropWinpmem() error {
 	return nil
 }
 
-func (a *Acquisition) GenerateMemoryDump() error {
+func GenerateMemoryDump(acq *acquisition.Acquisition) error {
+	if !promptMemory() {
+		fmt.Println("Skipping memory acquisition.")
+		return nil
+	}
+
 	err := dropWinpmem()
 	if err != nil {
 		return fmt.Errorf("failed to create winpmem: %v", err)
 	}
 
-	cmdArgs := []string{filepath.Join(a.MemoryPath, "physmem.raw")}
+	cmdArgs := []string{filepath.Join(acq.MemoryPath, "physmem.raw")}
 
 	err = exec.Command(winpmemPath, cmdArgs...).Run()
 	if err != nil {

@@ -6,15 +6,16 @@
 package utils
 
 import (
-	"fmt"
 	"os"
-	"os/user"
 	"path"
-
-	"github.com/matishsiao/goInfo"
+	"reflect"
+	"runtime"
 )
 
-// Get current working directory.
+func GetFunctionName(i interface{}) string {
+	return runtime.FuncForPC(reflect.ValueOf(i).Pointer()).Name()
+}
+
 func GetCwd() string {
 	exe, err := os.Executable()
 	if err != nil {
@@ -22,26 +23,4 @@ func GetCwd() string {
 	}
 
 	return path.Dir(exe)
-}
-
-// Get current username.
-func GetUserName() string {
-	userObject, err := user.Current()
-	if err != nil {
-		return ""
-	}
-
-	return userObject.Username
-}
-
-// Get computer name.
-func GetComputerName() string {
-	hostname, _ := os.Hostname()
-	return hostname
-}
-
-// Get some accurate version of the operating system.
-func GetOperatingSystem() string {
-	gi := goInfo.GetInfo()
-	return fmt.Sprintf("%s %s %s", gi.OS, gi.Core, gi.Platform)
 }
