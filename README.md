@@ -14,7 +14,7 @@ pcqf doesn't require any configuration or parameters, it just needs to be execut
 
 Executable binaries for Linux, Windows and Mac should be available in the [latest release](https://github.com/botherder/pcqf/releases/latest). In case you have issues running the binary you might want to build it by yourself.
 
-In order to build pcqf you will need Go 1.15+ installed. You will also need to install `make`. When ready you can clone the repository and run any of the following commands, for your platform of choice:
+In order to build pcqf you will need Go 1.17+ installed. You will also need to install `make`. When ready you can clone the repository and run any of the following commands, for your platform of choice:
 
     make linux
     make darwin
@@ -26,7 +26,7 @@ These commands will generate binaries in a *build/* folder.
 
 1. Download pcqf on a USB device. Make sure that the device has enough space to store all the acquisitions you are going to make. It is advisable to format the USB device as NTFS, in case you will end up dumping memory of computers with significant RAM.
 
-2. Mount the USB device on the computer to inspect. Browse to the pcqf folder and double-click on the tool. It should ask you to allow the application to run with Administrator privileges, which are required to obtain a memory snapshot. On Mac computers, you will need to launch pcqf from the terminal with the commands `chmod +x pcqf` and `sudo ./pcqf`.
+2. Mount the USB device on the computer to inspect. Browse to the pcqf folder and double-click on the tool. It should ask you to allow the application to run with Administrator privileges, which are required to obtain a memory snapshot. On Mac and Linux computers, you will need to launch pcqf from the terminal with the commands `chmod +x pcqf` and `./pcqf`.
 
 3. Wait for the tool to complete its execution. You will see some log messages displayed in console. Pay particular attention in case it mentions problems for example in relation to the generation of the memory dump.
 
@@ -34,7 +34,7 @@ These commands will generate binaries in a *build/* folder.
 
 5. Each acquisition folder will contain the following files:
 
-    - A `profile.json` file containing basic information on the computer system.
+    - A `systeminfo.json` file containing basic information on the computer system.
     - A `process_list.json` file containing a list of running processes.
     - A `autoruns.json` file containing a list of all items with persistence on the system.
     - A `autoruns_bins/` folder containing copies of the files and executables marked for persistence in the previous JSON file.
