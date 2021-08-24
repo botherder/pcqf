@@ -15,11 +15,6 @@ import (
 
 var acq *acquisition.Acquisition
 
-func printError(msg string, err error) {
-	cfmt.Printf("{{ERROR:}}::red|bold %s: {{%s}}::italic\n",
-		msg, err.Error())
-}
-
 func init() {
 	cfmt.Print(`
 	    {{                        ____  }}::green
@@ -31,6 +26,11 @@ func init() {
 	`)
 	cfmt.Println("\t\tpcqf - PC Quick Forensics")
 	cfmt.Println()
+}
+
+func printError(msg string, err error) {
+	cfmt.Printf("{{ERROR:}}::red|bold %s: {{%s}}::italic\n",
+		msg, err.Error())
 }
 
 func systemPause() {
